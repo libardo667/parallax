@@ -2,6 +2,23 @@
 
 Local web tool served through a Node.js proxy (`proxy_server.mjs`) with OpenRouter support and an optional experimental Wolfram Alpha integration.
 
+## Generative Sculpting Workflow
+
+The repository now includes a harness-oriented planning and execution layer for
+AI-assisted development:
+
+- Top-level agent entrypoint: `AGENTS.md`
+- Project anchors: `improvements/VISION.md`, `improvements/ROADMAP.md`
+- Stable commands: `improvements/COMMAND_SURFACE.md`
+- Harness reference: `improvements/harness/README.md`
+
+Canonical local commands:
+
+- `npm run start`
+- `npm run check`
+- `npm run smoke`
+- `npm run quality:strict`
+
 ## Prerequisites
 
 - Extract this project into its own dedicated folder.

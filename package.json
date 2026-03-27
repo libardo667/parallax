@@ -1,0 +1,12 @@
+{
+  "name": "parallax-workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node proxy_server.mjs",
+    "check": "node scripts/check-static.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "test": "npm run smoke",
+    "quality:strict": "npm run check && npm run smoke"
+  }
+}
