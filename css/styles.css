@@ -191,7 +191,10 @@ body.plot-zen .panel-trigger,body.plot-zen .floating-panel,body.plot-zen .panel-
 #controls-hint{left:28px;top:50%;transform:translateY(-50%);animation:hint-bounce-x 2s ease-in-out infinite}
 #diagnostics-hint{bottom:28px;left:50%;transform:translateX(-50%);animation:hint-bounce-y 2s ease-in-out infinite}
 #plot-nav-hint{bottom:56px;left:50%;transform:translateX(-50%);background:transparent;color:var(--muted);border:1px solid var(--border);font-size:10px;animation:none}
-#toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--danger-bg);border:1px solid var(--danger-border);color:var(--danger-text);padding:12px 20px;border-radius:6px;font-size:13px;letter-spacing:.3px;z-index:999}
+#toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--line);color:var(--text);padding:12px 20px;border-radius:6px;font-size:13px;letter-spacing:.3px;z-index:999;max-width:min(88vw,780px);box-shadow:0 14px 32px rgba(0,0,0,.22)}
+#toast[data-tone="error"]{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-text)}
+#toast[data-tone="success"]{background:rgba(22,163,74,.14);border-color:rgba(22,163,74,.36);color:#166534}
+#toast[data-tone="warning"]{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.35);color:#92400e}
 .modal{display:none;position:fixed;inset:0;background:#0008;z-index:1200;align-items:center;justify-content:center;padding:24px}
 .modal-card{width:min(900px,95vw);max-height:85vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
 .modal-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}

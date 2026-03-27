@@ -1,7 +1,7 @@
 import { COLORS, PROJECTION_BASE_SEED, PROJECTION_STABILITY_RUNS } from '../core/constants.js';
 import { ACTIVE_ARTIFACT_KEY, CALL_LOGS, CA_PROBE_OUTPUT, CITATIONS, CITATION_UNMAPPED_SUPPORTING_TERMS, CURRENT_RUN_ID, DISCS, DISC_SIM_MATRIX, EVIDENCE_FILTER_STATE, LAST_RUN, PROJECTION_STABILITY, RUN_STATE, SEMANTIC_EDGES, SOURCE_MATERIAL, TERMS, activeSetupMode, activeSlices, activeTypes, isGenerating, lastClaimsText, lastCritiqueText, lastMarkdownText, lastOutlineText, lastReportText, plotInited, sessionConfig, setActiveArtifactKey, setCallLogs, setCAProbeOutput, setCitations, setCitationUnmappedSupportingTerms, setCurrentRunId, setDiscs, setDiscSimMatrix, setEvidenceFilterState, setIsGenerating, setLastRun, setProjectionStability, setRunState, setSemanticEdges, setSessionConfig, setSourceMaterial, setTerms, setActiveSlices, setActiveTypes, setLastClaimsText, setLastCritiqueText, setLastMarkdownText, setLastOutlineText, setLastReportText, setPlotInited } from '../core/state.js';
 import { clampInt } from '../core/utils.js';
-import { setProbeState, showToast } from '../ui/notifications.js';
+import { setProbeState, showActionableError, showToast } from '../ui/notifications.js';
 import { switchMainTab } from '../ui/tabs.js';
 import { getCurrentProbeSpecs, renderDisciplineInputs, summarizeSourcesForPipeline } from '../ui/setup-panel.js';
 import { closeModal } from '../ui/modals.js';
@@ -35,12 +35,12 @@ import { buildProbeSystemPrompt, buildProbeUserPrompt, buildRedTeamPrompt, build
 
 export async function launchExpedition(){
   const target=document.getElementById("target-input").value.trim();
-  if(!target){showToast("Please enter a target concept.");return;}
+  if(!target){showToast("Please enter a target concept.",{tone:"warning"});return;}
   const cfg=readApiConfig();
   const quality=getQualityProfile(cfg.qualityMode);
   const cfgError=validateApiConfig(cfg);
-  if(cfgError){showToast(cfgError);return;}
-  if(normalizeMode(cfg)==="direct"&&location.protocol==="file:"){showToast("Tip: if auth fails in direct mode, serve this file from localhost instead of file://.");}
+  if(cfgError){showToast(cfgError,{tone:"error"});return;}
+  if(normalizeMode(cfg)==="direct"&&location.protocol==="file:"){showToast("Tip: if auth fails in direct mode, serve this file from localhost instead of file://.",{tone:"warning"});}
   setSessionConfig(cfg);
   setCallLogs([]);
   setCitations([]);
@@ -50,7 +50,7 @@ export async function launchExpedition(){
   initArtifactStore();
   const discInputEls=Array.from(document.querySelectorAll(".disc-input")).filter(el=>el.value.trim());
   const discNames=discInputEls.map(el=>el.value.trim());
-  if(discNames.length<2){showToast("Please fill in at least 2 disciplines.");return;}
+  if(discNames.length<2){showToast("Please fill in at least 2 disciplines.",{tone:"warning"});return;}
   const discSpecs=discInputEls.map(el=>({name:el.value.trim(),color:el.dataset.color||"",kind:"llm"}));
   const probeSystemDefault=buildProbeSystemPrompt(cfg);
   const probeSystemBundle=resolvePromptBundleWithOverrides("probe_system",{target,cfg,quality,defaults:{systemPrompt:probeSystemDefault,userPrompt:""}});
@@ -68,50 +68,29 @@ export async function launchExpedition(){
   setIsGenerating(true);
   const isLensMode = activeSetupMode === "lens";
 
-  // Show inline progress in the active mode's panel (don't switch tabs)
   const progressContainer = isLensMode
     ? document.getElementById("lens-progress")
     : document.getElementById("explore-progress");
   if(progressContainer) progressContainer.classList.add("active");
 
-  // Target label
   const targetLabelEl = isLensMode
     ? document.getElementById("lens-prog-target-label")
     : document.getElementById("prog-target-label");
   const sourceLabel=cfg.sourceUrls?.length?` | SOURCES: ${cfg.sourceUrls.length} URL(s)`:"";
   if(targetLabelEl) targetLabelEl.textContent=`TARGET: ${target.toUpperCase()} | CHAT MODEL: ${cfg.researchModel} | EMBED MODEL: ${cfg.embeddingModel} | QUALITY: ${quality.id.toUpperCase()} | WEB: ${cfg.webSearch?"ON":"OFF"} | CA: ${cfg.enableComputationalIrreducibility?"ON":"OFF"}${sourceLabel}`;
 
-  // Probe list
   const probeListEl = isLensMode
     ? document.getElementById("lens-probe-list")
     : document.getElementById("probe-list");
   probeListEl.innerHTML="";
   for(const d of DISCS){const el=document.createElement("div");el.className="probe-item";el.innerHTML=`<div class="probe-dot idle" id="dot-${d.id}"></div><span class="probe-name" style="color:${d.col}">${d.name}</span><span class="probe-status" id="status-${d.id}">QUEUED</span><div class="probe-progress-track"><div class="probe-progress-fill" id="probe-fill-${d.id}"></div></div>`;probeListEl.appendChild(el);}
-  // Overall progress bar
   const overallBar=document.createElement("div");
   overallBar.className="overall-progress";
   overallBar.innerHTML=`<div class="overall-progress-label" id="overall-progress-label">0 of ${DISCS.length} probes complete</div><div class="overall-progress-track"><div class="overall-progress-fill" id="overall-progress-fill"></div></div>`;
   probeListEl.after(overallBar);
 
-  // Synth bar — use the one in the active progress container
   const synthBarId = isLensMode ? "lens-synth-bar" : "synth-bar";
 
-  // Lens mode: summarize sources inline if not yet done
-  if(isLensMode && (!SOURCE_MATERIAL.byDisc || !Object.keys(SOURCE_MATERIAL.byDisc).length)){
-    const synthBarEarly=document.getElementById(synthBarId);
-    synthBarEarly.className="synth-bar running";
-    synthBarEarly.textContent="SUMMARIZING SOURCES...";
-    const selectedCards=[...document.querySelectorAll(".source-pick-card.selected")];
-    const sumResult=await summarizeSourcesForPipeline(selectedCards,cfg,(done,total)=>{
-      synthBarEarly.textContent=`SUMMARIZING SOURCES - ${done} of ${total} articles...`;
-    });
-    setSourceMaterial({urls:sumResult.successful.map(r=>r.url),text:sumResult.combined,byDisc:sumResult.byDisc,titles:sumResult.successful.map(r=>r.title||r.url)});
-    cfg.sourceText=sumResult.combined;
-    cfg.sourceUrls=sumResult.successful.map(r=>r.url);
-    cfg.sourceByDisc=sumResult.byDisc;
-    synthBarEarly.className="synth-bar done";
-    synthBarEarly.textContent=`${sumResult.successful.length} ARTICLES SUMMARIZED${sumResult.failed.length?` · ${sumResult.failed.length} failed`:""}`;
-  }
   function updateOverallProgress(){
     const done=document.querySelectorAll(".probe-item.done, .probe-item.error").length;
     const fill=document.getElementById("overall-progress-fill");
@@ -119,155 +98,202 @@ export async function launchExpedition(){
     if(fill) fill.style.width=`${(done/DISCS.length)*100}%`;
     if(label) label.textContent=`${done} of ${DISCS.length} probes complete`;
   }
-  const probePromises=DISCS.map(async(d)=>{
-    setProbeState(d.id,"running","RESEARCHING...");
-    try{
-      const discSourceText=cfg.sourceByDisc?.[d.name]||cfg.sourceText||"";
-      const discCfg=discSourceText!==cfg.sourceText?{...cfg,sourceText:discSourceText}:cfg;
-      const probeDefaults={systemPrompt:probeSystem,userPrompt:buildProbeUserPrompt(target,d.name,quality,discCfg)};
-      const probeBundle=resolvePromptBundleWithOverrides("probe_user",{discName:d.name,target,cfg:discCfg,quality,defaults:probeDefaults});
-      const norm=await getProbeResultWithRecovery({target,discName:d.name,probeSystem:probeBundle.systemPrompt||probeSystem,userMsg:probeBundle.userPrompt,cfg:discCfg});
-      setProbeState(d.id,"done",`${norm.terms?.length||0} TERMS`);
-      updateOverallProgress();
-      return {discId:d.id,summary:norm.summary,terms:Array.isArray(norm.terms)?norm.terms:[],claims_or_findings:norm.claims_or_findings,citations:norm.citations,confidence_notes:norm.confidence_notes};
-    }catch(err){
-      setProbeState(d.id,"error","ERROR");
-      updateOverallProgress();
-      console.error(`Probe ${d.name} failed:`,err);
-      return {discId:d.id,summary:"",terms:[],claims_or_findings:[],citations:[],confidence_notes:""};
-    }
-  });
-  const probeResults=await Promise.all(probePromises);
-  RUN_STATE.probeResults=probeResults;
-  RUN_STATE.caProbe=null;
-  const synthBar=document.getElementById(synthBarId);
-  synthBar.className="synth-bar running";
-  synthBar.textContent="SYNTHESIS - identifying convergences, contradictions, emergent features...";
-  let synthResult={convergent:[],contradictory:[],emergent:[]};
+
   try{
-    synthResult=await getSynthesisResultWithRecovery(target,probeResults,quality,cfg,{contextLabel:"launch"});
-    synthBar.className="synth-bar done";
-    synthBar.textContent=`SYNTHESIS COMPLETE - ${synthResult.convergent?.length||0} convergent | ${synthResult.contradictory?.length||0} contradictions | ${synthResult.emergent?.length||0} emergent`;
-  }catch(err){
-    synthBar.className="synth-bar error";
-    synthBar.textContent="SYNTHESIS ERROR - proceeding with fallback synthesis";
-    console.error("Synthesis failed:",err);
-    synthResult=normalizeSynthesisResult({},target,probeResults,quality);
-  }
-  RUN_STATE.synthResult=synthResult;
-  if(quality.cleanup){
-    synthBar.className="synth-bar running";
-    synthBar.textContent="TERM CLEANUP - resolving near-duplicate wording...";
-    try{await applySecondPassCleanup(target,probeResults,synthResult,cfg);synthBar.textContent="TERM CLEANUP COMPLETE";}
-    catch(err){console.warn("Cleanup pass failed:",err);synthBar.textContent="TERM CLEANUP SKIPPED - using first pass terms";}
-  }
-  buildTerms(probeResults,synthResult);
-  collectCitations();
-  // Embedding, semantic edges, and CA — skip for Lens mode (deferred to EXPLORE IN 3D)
-  if(!isLensMode){
-    if(TERMS.length){
-      synthBar.className="synth-bar running";
+    if(isLensMode && (!SOURCE_MATERIAL.byDisc || !Object.keys(SOURCE_MATERIAL.byDisc).length)){
+      const synthBarEarly=document.getElementById(synthBarId);
+      synthBarEarly.className="synth-bar running";
+      synthBarEarly.textContent="SUMMARIZING SOURCES...";
+      const selectedCards=[...document.querySelectorAll(".source-pick-card.selected")];
+      const sumResult=await summarizeSourcesForPipeline(selectedCards,cfg,(done,total)=>{
+        synthBarEarly.textContent=`SUMMARIZING SOURCES - ${done} of ${total} articles...`;
+      });
+      setSourceMaterial({urls:sumResult.successful.map(r=>r.url),text:sumResult.combined,byDisc:sumResult.byDisc,titles:sumResult.successful.map(r=>r.title||r.url)});
+      cfg.sourceText=sumResult.combined;
+      cfg.sourceUrls=sumResult.successful.map(r=>r.url);
+      cfg.sourceByDisc=sumResult.byDisc;
+      synthBarEarly.className="synth-bar done";
+      synthBarEarly.textContent=`${sumResult.successful.length} ARTICLES SUMMARIZED${sumResult.failed.length?` · ${sumResult.failed.length} failed`:""}`;
+      if(sumResult.failed.length){
+        showToast(`${sumResult.failed.length} source article${sumResult.failed.length===1?"":"s"} could not be fetched. The run will continue with partial source coverage.`,{tone:"warning",timeout:7000});
+      }
+    }
+
+    const probeWarnings=[];
+    const probeErrors=[];
+    const probePromises=DISCS.map(async(d)=>{
+      setProbeState(d.id,"running","RESEARCHING...");
       try{
-        await assignSemanticPositions(target,cfg,msg=>{synthBar.textContent=msg;});
-        synthBar.className="synth-bar done";
-        synthBar.textContent=`VECTOR LAYOUT COMPLETE - ${TERMS.length} terms positioned by semantic distance`;
+        const discSourceText=cfg.sourceByDisc?.[d.name]||cfg.sourceText||"";
+        const discCfg=discSourceText!==cfg.sourceText?{...cfg,sourceText:discSourceText}:cfg;
+        const probeDefaults={systemPrompt:probeSystem,userPrompt:buildProbeUserPrompt(target,d.name,quality,discCfg)};
+        const probeBundle=resolvePromptBundleWithOverrides("probe_user",{discName:d.name,target,cfg:discCfg,quality,defaults:probeDefaults});
+        const norm=await getProbeResultWithRecovery({target,discName:d.name,probeSystem:probeBundle.systemPrompt||probeSystem,userMsg:probeBundle.userPrompt,cfg:discCfg});
+        if(norm.recoveryMode&&norm.recoveryMode!=="initial"){
+          probeWarnings.push({discName:d.name,recoveryMode:norm.recoveryMode});
+        }
+        setProbeState(d.id,"done",`${norm.terms?.length||0} TERMS`);
+        updateOverallProgress();
+        return {discId:d.id,summary:norm.summary,terms:Array.isArray(norm.terms)?norm.terms:[],claims_or_findings:norm.claims_or_findings,citations:norm.citations,confidence_notes:norm.confidence_notes};
       }catch(err){
-        console.error("Embedding layout failed:",err);
+        setProbeState(d.id,"error","ERROR");
+        updateOverallProgress();
+        probeErrors.push({discName:d.name,error:err});
+        console.error(`Probe ${d.name} failed:`,err);
+        return {discId:d.id,summary:"",terms:[],claims_or_findings:[],citations:[],confidence_notes:""};
+      }
+    });
+
+    const probeResults=await Promise.all(probePromises);
+    if(probeErrors.length===DISCS.length){
+      throw (probeErrors[0]?.error||new Error("All probes failed."));
+    }
+    if(probeErrors.length){
+      const summary=probeErrors.length===1
+        ? `${probeErrors[0].discName} failed. The run will continue with partial probe coverage.`
+        : `${probeErrors.length} probes failed. The run will continue with partial probe coverage.`;
+      showToast(summary,{tone:"warning",timeout:7000});
+      showActionableError(probeErrors[0].error,{context:"probe",timeout:8000});
+    }else if(probeWarnings.length){
+      showToast(`${probeWarnings.length} probe${probeWarnings.length===1?"":"s"} required structured-output recovery. Review results carefully if they look thin.`,{tone:"warning",timeout:7000});
+    }
+
+    RUN_STATE.probeResults=probeResults;
+    RUN_STATE.caProbe=null;
+    const synthBar=document.getElementById(synthBarId);
+    synthBar.className="synth-bar running";
+    synthBar.textContent="SYNTHESIS - identifying convergences, contradictions, emergent features...";
+    let synthResult={convergent:[],contradictory:[],emergent:[]};
+    try{
+      synthResult=await getSynthesisResultWithRecovery(target,probeResults,quality,cfg,{contextLabel:"launch"});
+      synthBar.className="synth-bar done";
+      synthBar.textContent=`SYNTHESIS COMPLETE - ${synthResult.convergent?.length||0} convergent | ${synthResult.contradictory?.length||0} contradictions | ${synthResult.emergent?.length||0} emergent`;
+      if(synthResult.recoveryMode&&synthResult.recoveryMode!=="initial"){
+        showToast("The synthesis step required structured-output recovery. Review the result carefully before treating it as stable.",{tone:"warning",timeout:7000});
+      }
+    }catch(err){
+      synthBar.className="synth-bar error";
+      synthBar.textContent="SYNTHESIS ERROR - proceeding with fallback synthesis";
+      console.error("Synthesis failed:",err);
+      synthResult=normalizeSynthesisResult({},target,probeResults,quality);
+      showActionableError(err,{context:"synthesis"});
+    }
+    RUN_STATE.synthResult=synthResult;
+    if(quality.cleanup){
+      synthBar.className="synth-bar running";
+      synthBar.textContent="TERM CLEANUP - resolving near-duplicate wording...";
+      try{await applySecondPassCleanup(target,probeResults,synthResult,cfg);synthBar.textContent="TERM CLEANUP COMPLETE";}
+      catch(err){console.warn("Cleanup pass failed:",err);synthBar.textContent="TERM CLEANUP SKIPPED - using first pass terms";}
+    }
+    buildTerms(probeResults,synthResult);
+    collectCitations();
+    if(!isLensMode){
+      if(TERMS.length){
+        synthBar.className="synth-bar running";
+        try{
+          await assignSemanticPositions(target,cfg,msg=>{synthBar.textContent=msg;});
+          synthBar.className="synth-bar done";
+          synthBar.textContent=`VECTOR LAYOUT COMPLETE - ${TERMS.length} terms positioned by semantic distance`;
+        }catch(err){
+          console.error("Embedding layout failed:",err);
+          applyFallbackPositions();
+          setDiscSimMatrix(null);
+          setProjectionStability(null);
+          synthBar.className="synth-bar error";
+          synthBar.textContent="VECTOR LAYOUT ERROR - using fallback geometry";
+          showActionableError(err,{context:"embedding"});
+        }
+      }else{
         applyFallbackPositions();
         setDiscSimMatrix(null);
         setProjectionStability(null);
-        synthBar.className="synth-bar error";
-        synthBar.textContent="VECTOR LAYOUT ERROR - using fallback geometry";
-        showToast("Embedding layout failed. Fallback geometry was applied.");
       }
-    }else{
+      setSemanticEdges(null);
+      if(TERMS.length>=4){
+        synthBar.className="synth-bar running";
+        synthBar.textContent="SEMANTIC EDGES - analyzing relationships between terms...";
+        try{
+          const edgeResult=await extractSemanticEdges(target,cfg,quality);
+          if(edgeResult&&edgeResult.relationships.length>0){
+            setSemanticEdges(edgeResult);
+            if(quality.id==="rigor"){
+              synthBar.textContent="SEMANTIC EDGES - refining positions with force layout...";
+              const termIndex=new Map();
+              for(let i=0;i<TERMS.length;i++) termIndex.set(TERMS[i].label.toLowerCase().trim(),i);
+              const currentPositions=TERMS.map(t=>[...t.pos]);
+              const refined=refinePositionsWithEdges(currentPositions,edgeResult.relationships,termIndex);
+              for(let i=0;i<TERMS.length;i++) TERMS[i].pos=refined[i]||TERMS[i].pos;
+            }
+            synthBar.className="synth-bar done";
+            synthBar.textContent=`SEMANTIC EDGES COMPLETE - ${edgeResult.relationships.length} relationships identified`;
+          }else{
+            synthBar.className="synth-bar done";
+            synthBar.textContent="SEMANTIC EDGES - no relationships extracted";
+          }
+        }catch(err){
+          console.warn("Semantic edge extraction failed:",err);
+          setSemanticEdges(null);
+          synthBar.className="synth-bar error";
+          synthBar.textContent="SEMANTIC EDGES SKIPPED - proceeding without relationship graph";
+          showToast("Semantic edge extraction failed. The run will continue without the relationship graph.",{tone:"warning",timeout:7000});
+        }
+      }
+      if(cfg.enableComputationalIrreducibility){
+        synthBar.className="synth-bar running";
+        synthBar.textContent="COMPUTATIONAL IRREDUCIBILITY - deriving CA from run topology...";
+        try{
+          const caResult=await deriveCAFromRun(target,cfg,probeResults,synthResult,{
+            discSimilarityMatrix:DISC_SIM_MATRIX,
+            projectionStability:PROJECTION_STABILITY
+          });
+          setCAProbeOutput(caResult);
+          appendDerivedCATermsToTerms(buildCATermsFromMetrics(caResult));
+          RUN_STATE.caProbe=caResult;
+          const densityPct=(Number((caResult?.metrics?.densityFinal??caResult?.metrics?.density)||0)*100).toFixed(1);
+          const volatilityPct=(Number((caResult?.metrics?.volatilityFinal??caResult?.metrics?.volatility)||0)*100).toFixed(1);
+          synthBar.className="synth-bar done";
+          synthBar.textContent=`CA DIAGNOSTIC COMPLETE - Rule ${caResult?.rule??"n/a"} | ${densityPct}% density | ${volatilityPct}% volatility`;
+        }catch(err){
+          console.error("CA diagnostic failed:",err);
+          setCAProbeOutput(null);
+          RUN_STATE.caProbe=null;
+          synthBar.className="synth-bar error";
+          synthBar.textContent="CA DIAGNOSTIC SKIPPED - error in derivation";
+          showActionableError(err,{context:"ca diagnostic"});
+        }
+      }else{
+        setCAProbeOutput(null);
+        RUN_STATE.caProbe=null;
+      }
+    } else {
       applyFallbackPositions();
       setDiscSimMatrix(null);
       setProjectionStability(null);
-    }
-    setSemanticEdges(null);
-    if(TERMS.length>=4){
-      synthBar.className="synth-bar running";
-      synthBar.textContent="SEMANTIC EDGES - analyzing relationships between terms...";
-      try{
-        const edgeResult=await extractSemanticEdges(target,cfg,quality);
-        if(edgeResult&&edgeResult.relationships.length>0){
-          setSemanticEdges(edgeResult);
-          if(quality.id==="rigor"){
-            synthBar.textContent="SEMANTIC EDGES - refining positions with force layout...";
-            const termIndex=new Map();
-            for(let i=0;i<TERMS.length;i++) termIndex.set(TERMS[i].label.toLowerCase().trim(),i);
-            const currentPositions=TERMS.map(t=>[...t.pos]);
-            const refined=refinePositionsWithEdges(currentPositions,edgeResult.relationships,termIndex);
-            for(let i=0;i<TERMS.length;i++) TERMS[i].pos=refined[i]||TERMS[i].pos;
-          }
-          synthBar.className="synth-bar done";
-          synthBar.textContent=`SEMANTIC EDGES COMPLETE - ${edgeResult.relationships.length} relationships identified`;
-        }else{
-          synthBar.className="synth-bar done";
-          synthBar.textContent="SEMANTIC EDGES - no relationships extracted";
-        }
-      }catch(err){
-        console.warn("Semantic edge extraction failed:",err);
-        setSemanticEdges(null);
-        synthBar.className="synth-bar error";
-        synthBar.textContent="SEMANTIC EDGES SKIPPED - proceeding without relationship graph";
-      }
-    }
-    if(cfg.enableComputationalIrreducibility){
-      synthBar.className="synth-bar running";
-      synthBar.textContent="COMPUTATIONAL IRREDUCIBILITY - deriving CA from run topology...";
-      try{
-        const caResult=await deriveCAFromRun(target,cfg,probeResults,synthResult,{
-          discSimilarityMatrix:DISC_SIM_MATRIX,
-          projectionStability:PROJECTION_STABILITY
-        });
-        setCAProbeOutput(caResult);
-        appendDerivedCATermsToTerms(buildCATermsFromMetrics(caResult));
-        RUN_STATE.caProbe=caResult;
-        const densityPct=(Number((caResult?.metrics?.densityFinal??caResult?.metrics?.density)||0)*100).toFixed(1);
-        const volatilityPct=(Number((caResult?.metrics?.volatilityFinal??caResult?.metrics?.volatility)||0)*100).toFixed(1);
-        synthBar.className="synth-bar done";
-        synthBar.textContent=`CA DIAGNOSTIC COMPLETE - Rule ${caResult?.rule??"n/a"} | ${densityPct}% density | ${volatilityPct}% volatility`;
-      }catch(err){
-        console.error("CA diagnostic failed:",err);
-        setCAProbeOutput(null);
-        RUN_STATE.caProbe=null;
-        synthBar.className="synth-bar error";
-        synthBar.textContent="CA DIAGNOSTIC SKIPPED - error in derivation";
-        showToast("CA diagnostic derivation failed. Output is otherwise available.");
-      }
-    }else{
+      setSemanticEdges(null);
       setCAProbeOutput(null);
       RUN_STATE.caProbe=null;
     }
-  } else {
-    // Lens mode: skip embedding/edges/CA for now
-    applyFallbackPositions();
-    setDiscSimMatrix(null);
-    setProjectionStability(null);
-    setSemanticEdges(null);
-    setCAProbeOutput(null);
-    RUN_STATE.caProbe=null;
-  }
-  if(cfg.redTeam){synthBar.className="synth-bar running";synthBar.textContent="RED TEAM - generating adversarial critique...";await runRedTeamPass(true);synthBar.className="synth-bar done";synthBar.textContent="RED TEAM COMPLETE";}
-  setLastRun(buildRunSnapshot(target,probeResults,synthResult,cfg));
-  saveRunToHistory(LAST_RUN).catch(()=>{});
-  syncArtifactStoreFromRun();
-  setIsGenerating(false);
-  await new Promise(resolve=>setTimeout(resolve,500));
-  // Hide inline progress
-  if(progressContainer) progressContainer.classList.remove("active");
+    if(cfg.redTeam){synthBar.className="synth-bar running";synthBar.textContent="RED TEAM - generating adversarial critique...";await runRedTeamPass(true);synthBar.className="synth-bar done";synthBar.textContent="RED TEAM COMPLETE";}
+    setLastRun(buildRunSnapshot(target,probeResults,synthResult,cfg));
+    saveRunToHistory(LAST_RUN).catch(()=>{});
+    syncArtifactStoreFromRun();
+    await new Promise(resolve=>setTimeout(resolve,500));
 
-  if(isLensMode){
-    // Lens mode: land on dashboard, auto-generate artifacts
-    const { renderDashboard, autoGenerateLensArtifacts } = await import('../ui/lens-dashboard.js');
-    switchMainTab("dashboard",{silent:true});
-    renderDashboard(target);
-    autoGenerateLensArtifacts(target,cfg);
-  }else{
-    showViz(target);
-    switchMainTab("plot",{silent:true});
+    if(isLensMode){
+      const { renderDashboard, autoGenerateLensArtifacts } = await import('../ui/lens-dashboard.js');
+      switchMainTab("dashboard",{silent:true});
+      renderDashboard(target);
+      autoGenerateLensArtifacts(target,cfg);
+    }else{
+      showViz(target);
+      switchMainTab("plot",{silent:true});
+    }
+  }catch(err){
+    console.error("Launch failed:",err);
+    showActionableError(err,{context:"launch"});
+  }finally{
+    setIsGenerating(false);
+    if(progressContainer) progressContainer.classList.remove("active");
   }
 }
 

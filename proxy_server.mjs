@@ -63,16 +63,31 @@ async function proxyOpenRouter(req, res, kind) {
   const url = kind === "chat"
     ? "https://openrouter.ai/api/v1/chat/completions"
     : "https://openrouter.ai/api/v1/embeddings";
-  const upstream = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": auth,
-      "HTTP-Referer": req.headers.origin || "http://localhost",
-      "X-Title": "Parallax Proxy"
-    },
-    body: JSON.stringify(body)
-  });
+  let upstream;
+  try {
+    upstream = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": auth,
+        "HTTP-Referer": req.headers.origin || "http://localhost",
+        "X-Title": "Parallax Proxy"
+      },
+      body: JSON.stringify(body)
+    });
+  } catch (err) {
+    send(
+      res,
+      502,
+      JSON.stringify({
+        error: "Failed to reach OpenRouter from the local proxy.",
+        detail: String(err?.message || err),
+        hint: "Check internet connectivity and retry."
+      }),
+      { "Content-Type": MIME[".json"] }
+    );
+    return;
+  }
   const text = await upstream.text();
   send(res, upstream.status, text, { "Content-Type": upstream.headers.get("content-type") || MIME[".json"] });
 }

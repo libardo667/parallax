@@ -6,7 +6,7 @@
 - Title: Surfaced, Actionable Error Handling
 - Type: major
 - Owner: unassigned
-- Status: ready
+- Status: in_progress
 - Risk: medium
 - Target Window: TBD
 - Depends On: none
@@ -33,6 +33,7 @@ notification and status surfaces instead of building a separate reporting path.
 Planned file-level touchpoints:
 
 - `js/api/llm.js`
+- `js/api/provider.js`
 - `js/api/json-recovery.js`
 - `js/pipeline/launch-expedition.js`
 - `js/ui/notifications.js`
@@ -42,6 +43,7 @@ Planned file-level touchpoints:
 ## Files Affected
 
 - `js/api/llm.js`
+- `js/api/provider.js`
 - `js/api/json-recovery.js`
 - `js/pipeline/launch-expedition.js`
 - `js/ui/notifications.js`
