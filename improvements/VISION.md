@@ -11,8 +11,13 @@ It has two primary user journeys:
 - **Parallax Lens**: source-first, text-primary analysis with the 3D map as an
   optional follow-on view.
 
-The authoritative backlog and detailed feature rationale currently live in
-`majors_and_minors.md`.
+The durable product and engineering direction lives in `PRODUCT_PLAN.md`.
+Tracked major and minor work under `items/` should implement that plan without
+creating parallel analysis paths.
+
+Wolfram and cellular-automaton experiments are legacy surface area scheduled
+for removal. They are not part of Parallax's product identity or future
+architecture.
 
 ## Engineering Intent
 
