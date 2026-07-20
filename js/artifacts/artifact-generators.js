@@ -7,10 +7,7 @@ import { getProbeResultWithRecovery } from '../pipeline/probes.js';
 import { getSynthesisResultWithRecovery } from '../pipeline/synthesis.js';
 import { callLLM, callLLMJSON, getQualityProfile, readApiConfig, validateApiConfig, withArtifactTokenBudget } from '../api/llm.js';
 import { extractJSON } from '../api/json-recovery.js';
-import { applyDisplayDescriptionForTerm, buildTermsForReplicationRun } from '../domain/terms.js';
-import { normalizeSourceType } from '../domain/citations.js';
-import { deriveReplicationCAFingerprint, formatReplicationCAFingerprintSection, formatWolframClassForReplication } from '../ca/derive-ca.js';
-import { renderCAPanel } from '../ca/render-ca-panel.js';
+import { applyDisplayDescriptionForTerm } from '../domain/terms.js';
 import { ARTIFACT_DEFS } from './artifact-store.js';
 import { downloadBlob } from './exporters.js';
 import { resolvePromptBundleWithOverrides } from '../prompt/prompt-system.js';
@@ -56,7 +53,6 @@ export async function runReplication(){
     console.error("Replication failed:",err);
     el.textContent=`Replication failed:\n${err.message||err}`;
   }
-  renderCAPanel();
 }
 
 export async function copyCritiqueText(){if(!lastCritiqueText){showToast("No critique text to copy.");return;}try{await navigator.clipboard.writeText(lastCritiqueText);showToast("Critique copied to clipboard.");}catch{showToast("Clipboard copy failed.");}}
@@ -81,33 +77,6 @@ export async function generateOutlineArtifact(target,cfg){const converg=TERMS.fi
 
 export async function generateRedTeamArtifact(target,cfg){const defaults={systemPrompt:"You are a skeptical reviewer.",userPrompt:buildRedTeamPrompt(target,RUN_STATE?.probeResults||[],RUN_STATE?.synthResult||{convergent:[],contradictory:[],emergent:[]},cfg)};const promptBundle=resolvePromptBundleWithOverrides("artifact_red_team",{target,cfg,quality:getQualityProfile(cfg.qualityMode),defaults});const cfgBudget=withArtifactTokenBudget(cfg,{minTokens:2400,multiplier:2.0,maxTokens:10000});const text=await callLLM(promptBundle.systemPrompt,promptBundle.userPrompt,cfgBudget);setLastCritiqueText(text);return {contentText:text,data:{text}};}
 
-export function buildReplicationCitationsFromProbeResults(probeResults){
-  const out=[];
-  let nextId=0;
-  for(const probe of (Array.isArray(probeResults)?probeResults:[])){
-    const discId=Number.isInteger(Number(probe?.discId))?Number(probe.discId):null;
-    for(const cite of (Array.isArray(probe?.citations)?probe.citations:[])){
-      const supporting=Array.isArray(cite?.supporting_terms)?cite.supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[];
-      out.push({
-        id:nextId++,
-        source_type:normalizeSourceType(cite?.source_type,cite?.publisher),
-        url:String(cite?.url||""),
-        title:String(cite?.title||""),
-        publisher:String(cite?.publisher||""),
-        date:String(cite?.date||""),
-        quote_or_snippet:String(cite?.quote_or_snippet||""),
-        relevance:String(cite?.relevance||""),
-        supporting_terms:supporting,
-        supporting_terms_raw:supporting,
-        supporting_term_mappings:[],
-        unmapped_supporting_terms:[],
-        probeId:discId
-      });
-    }
-  }
-  return out;
-}
-
 export async function generateReplicationArtifact(target,cfg){
   const models=(cfg.replicationModels||"").split(",").map(s=>s.trim()).filter(Boolean);
   if(!models.length) throw new Error("Add replication models (comma-separated) first.");
@@ -115,7 +84,7 @@ export async function generateReplicationArtifact(target,cfg){
   const runCount=clampInt(cfg.replicationRuns||1,1,5);
   const strategy=cfg.replicationStrategy||"fixed";
   const quality=getQualityProfile(cfg.qualityMode);
-  const activeDiscs=DISCS.filter(d=>d?.kind!=="ca");
+  const activeDiscs=DISCS;
   const baseTerms=RUN_STATE.probeResults.flatMap(r=>(r.terms||[]).map(t=>String(t.label||"").trim()).filter(Boolean));
   const baseTermSet=new Set(baseTerms);
   const baseContras=new Set((RUN_STATE.synthResult?.contradictory||[]).map(t=>String(t.label||"").trim()).filter(Boolean));
@@ -146,26 +115,13 @@ export async function generateReplicationArtifact(target,cfg){
         const contraSet=new Set((synthResult.contradictory||[]).map(t=>String(t.label||"").trim()).filter(Boolean));
         const emergSet=new Set((synthResult.emergent||[]).map(t=>String(t.label||"").trim()).filter(Boolean));
         for(const base of baseTermSet){if(!termSet.has(base)){termMissCounts.set(base,(termMissCounts.get(base)||0)+1);}}
-        const replicationTerms=buildTermsForReplicationRun(probeResults,synthResult);
-        const replicationCitations=buildReplicationCitationsFromProbeResults(probeResults);
-        let caFingerprint=null;
-        let caError="";
-        if(cfg2.enableComputationalIrreducibility){
-          try{
-            caFingerprint=await deriveReplicationCAFingerprint(target,cfg2,probeResults,synthResult,replicationTerms,replicationCitations);
-          }catch(err){
-            caError=String(err?.message||err);
-          }
-        }
         results.push({
           model,
           run:runNo,
           termOverlap:overlap(baseTermSet,termSet),
           contradictionOverlap:overlap(baseContras,contraSet),
           emergentOverlap:overlap(baseEmerg,emergSet),
-          synthCounts:{convergent:(synthResult.convergent||[]).length,contradictory:(synthResult.contradictory||[]).length,emergent:(synthResult.emergent||[]).length},
-          caFingerprint,
-          caError
+          synthCounts:{convergent:(synthResult.convergent||[]).length,contradictory:(synthResult.contradictory||[]).length,emergent:(synthResult.emergent||[]).length}
         });
       }catch(err){
         results.push({model,run:runNo,error:err.message||String(err)});
@@ -178,15 +134,9 @@ export async function generateReplicationArtifact(target,cfg){
   const lines=results.map(r=>{
     if(r.error) return `- ${r.model} [run ${r.run}]: ERROR ${r.error}`;
     const baseLine=`- ${r.model} [run ${r.run}]: term overlap ${(r.termOverlap*100).toFixed(1)}% | contradiction overlap ${(r.contradictionOverlap*100).toFixed(1)}% | emergent overlap ${(r.emergentOverlap*100).toFixed(1)}% | synth C/C/E ${r.synthCounts?.convergent||0}/${r.synthCounts?.contradictory||0}/${r.synthCounts?.emergent||0}`;
-    if(r.caFingerprint&&typeof r.caFingerprint==="object"){
-      const classLabel=formatWolframClassForReplication(r.caFingerprint.wolframClass,r.caFingerprint.wolframClassLabel);
-      return `${baseLine} | CA Rule ${clampInt(Number(r.caFingerprint.rule)||0,0,255)} (${classLabel}) | vol trend ${String(r.caFingerprint.volatilityTrend||"stable")}`;
-    }
-    if(r.caError) return `${baseLine} | CA fingerprint error: ${r.caError}`;
     return baseLine;
   }).join("\n");
-  const caSection=cfg.enableComputationalIrreducibility?formatReplicationCAFingerprintSection(results,models):"CA fingerprint stability:\n- disabled";
-  const text=`Replication summary for ${target}:\n\nStrategy: ${strategy} | Runs/model: ${runCount}\nStability score: ${(stability*100).toFixed(1)}%\n\n${lines}\n\n${caSection}\n\nUnstable terms:\n${unstable.length?unstable.map(x=>`- ${x}`).join("\n"):"- none flagged"}`;
+  const text=`Replication summary for ${target}:\n\nStrategy: ${strategy} | Runs/model: ${runCount}\nStability score: ${(stability*100).toFixed(1)}%\n\n${lines}\n\nUnstable terms:\n${unstable.length?unstable.map(x=>`- ${x}`).join("\n"):"- none flagged"}`;
   return {contentText:text,data:results};
 }
 

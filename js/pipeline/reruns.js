@@ -1,4 +1,4 @@
-import { CA_PROBE_OUTPUT, CITATIONS, DISCS, DISC_SIM_MATRIX, LAST_RUN, PROJECTION_STABILITY, RUN_STATE, TERMS, setCAProbeOutput, setLastRun } from '../core/state.js';
+import { DISCS, RUN_STATE, setLastRun } from '../core/state.js';
 import { showToast } from '../ui/notifications.js';
 import { assignSemanticPositions } from './launch-expedition.js';
 import { getProbeResultWithRecovery } from './probes.js';
@@ -7,8 +7,6 @@ import { getQualityProfile, readApiConfig, validateApiConfig } from '../api/llm.
 import { buildTerms } from '../domain/terms.js';
 import { collectCitations } from '../domain/citations.js';
 import { buildRunSnapshot } from '../domain/run-metadata.js';
-import { appendDerivedCATermsToTerms, buildCATermsFromMetrics, deriveCAFromRun } from '../ca/derive-ca.js';
-import { renderCAPanel } from '../ca/render-ca-panel.js';
 import { renderPlot } from '../plot/plot-render.js';
 import { buildStats } from '../plot/sidebar.js';
 import { markArtifactsStale, syncArtifactStoreFromRun } from '../artifacts/artifact-store.js';
@@ -33,18 +31,6 @@ export async function rerunSynthesis(){
     buildTerms(RUN_STATE.probeResults,synthResult);
     collectCitations();
     await assignSemanticPositions(RUN_STATE.target,cfg,msg=>{synthBar.textContent=msg;});
-    if(cfg.enableComputationalIrreducibility){
-      synthBar.textContent="CA DIAGNOSTIC - deriving run fingerprint...";
-      const caOutput=await deriveCAFromRun(RUN_STATE.target,cfg,RUN_STATE.probeResults,synthResult,{
-        discSimilarityMatrix:DISC_SIM_MATRIX,
-        projectionStability:PROJECTION_STABILITY,
-      });
-      appendDerivedCATermsToTerms(buildCATermsFromMetrics(caOutput));
-      RUN_STATE.caProbe=caOutput;
-    }else{
-      setCAProbeOutput(null);
-      RUN_STATE.caProbe=null;
-    }
     synthBar.className="synth-bar done";
     synthBar.textContent=`SYNTHESIS COMPLETE - ${synthResult.convergent?.length||0} convergent | ${synthResult.contradictory?.length||0} contradictions | ${synthResult.emergent?.length||0} emergent`;
     setLastRun(buildRunSnapshot(RUN_STATE.target,RUN_STATE.probeResults,synthResult,cfg));
@@ -73,22 +59,6 @@ export async function rerunProbe(discId){
   const probeSystemBundle=resolvePromptBundleWithOverrides("probe_system",{target,cfg,quality,defaults:{systemPrompt:probeSystemDefault,userPrompt:""}});
   try{
     showToast(`Re-running ${disc.name}...`);
-    if(disc.kind==="ca"){
-      const caOutput=await deriveCAFromRun(target,cfg,RUN_STATE.probeResults,RUN_STATE.synthResult||{convergent:[],contradictory:[],emergent:[]},{
-        discSimilarityMatrix:DISC_SIM_MATRIX,
-        projectionStability:PROJECTION_STABILITY,
-      });
-      appendDerivedCATermsToTerms(buildCATermsFromMetrics(caOutput));
-      RUN_STATE.caProbe=caOutput;
-      setLastRun(buildRunSnapshot(target,RUN_STATE.probeResults,RUN_STATE.synthResult||{convergent:[],contradictory:[],emergent:[]},cfg));
-      syncArtifactStoreFromRun();
-      markArtifactsStale(["claims","outline","deep_report","red_team","replication","markdown"]);
-      renderPlot();
-      buildStats();
-      renderCAPanel();
-      showToast("Run-derived CA diagnostics refreshed.");
-      return;
-    }
     const probeDefaults={systemPrompt:probeSystemBundle.systemPrompt||probeSystemDefault,userPrompt:buildProbeUserPrompt(target,disc.name,quality,cfg)};
     const probeBundle=resolvePromptBundleWithOverrides("probe_user",{discName:disc.name,target,cfg,quality,defaults:probeDefaults});
     const norm=await getProbeResultWithRecovery({target,discName:disc.name,probeSystem:probeBundle.systemPrompt||probeSystemBundle.systemPrompt||probeSystemDefault,userMsg:probeBundle.userPrompt,cfg});
@@ -98,23 +68,11 @@ export async function rerunProbe(discId){
     buildTerms(RUN_STATE.probeResults,RUN_STATE.synthResult||{convergent:[],contradictory:[],emergent:[]});
     collectCitations();
     await assignSemanticPositions(target,cfg,()=>{});
-    if(cfg.enableComputationalIrreducibility){
-      const caOutput=await deriveCAFromRun(target,cfg,RUN_STATE.probeResults,RUN_STATE.synthResult||{convergent:[],contradictory:[],emergent:[]},{
-        discSimilarityMatrix:DISC_SIM_MATRIX,
-        projectionStability:PROJECTION_STABILITY,
-      });
-      appendDerivedCATermsToTerms(buildCATermsFromMetrics(caOutput));
-      RUN_STATE.caProbe=caOutput;
-    }else{
-      setCAProbeOutput(null);
-      RUN_STATE.caProbe=null;
-    }
     setLastRun(buildRunSnapshot(target,RUN_STATE.probeResults,RUN_STATE.synthResult||{convergent:[],contradictory:[],emergent:[]},cfg));
     syncArtifactStoreFromRun();
     markArtifactsStale(["claims","outline","deep_report","red_team","replication","markdown"]);
     renderPlot();
     buildStats();
-    renderCAPanel();
     showToast(`Probe ${disc.name} updated.`);
   }catch(err){
     console.error("Probe rerun failed:",err);

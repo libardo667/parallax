@@ -3,7 +3,7 @@ import { toggleGallery } from '../plot/gallery.js';
 import { discInputsEl, themeSelectGlobalEl } from '../core/refs.js';
 import { initTabAccessibility, switchMainTab, toggleZenMode } from './tabs.js';
 import { applyTheme } from './theme.js';
-import { addProbeSpec, clearApiKey, clearSources, findStories, generateOrthogonalLenses, initGenerationPanelQol, initProgressiveDisclosure, initSourcesPanel, launchLensRun, onProbeActionClick, renderDisciplineInputs, syncApiModeNote, syncCAOverrideUI, toggleApiKey } from './setup-panel.js';
+import { addProbeSpec, clearApiKey, clearSources, findStories, generateOrthogonalLenses, initGenerationPanelQol, initProgressiveDisclosure, initSourcesPanel, launchLensRun, onProbeActionClick, renderDisciplineInputs, syncApiModeNote, toggleApiKey } from './setup-panel.js';
 import { closeModal, handleModalKeyboard } from './modals.js';
 import { applyPromptPreviewOverride, refreshPromptPreview, resetPromptPreviewOverride, syncPromptPreviewDiscOptions } from './prompt-preview.js';
 import { showEvidenceModal } from './evidence-modal-ui.js';
@@ -104,7 +104,7 @@ discInputsEl.addEventListener("input",()=>{markArtifactsStale(["claims","outline
 
 discInputsEl.addEventListener("change",()=>{syncPromptPreviewDiscOptions();refreshPromptPreview();});
 
-for(const id of ["api-mode","quality-mode-select","redteam-check","source-policy-input","replication-models-input","replication-runs-input","replication-strategy-select","research-model-input","embedding-model-input","web-search-check","ca-probe-check","ca-rule-input","ca-steps-input","ca-width-input","prompt-intent-input","prompt-lens-emphasis-input","prompt-hard-constraints-input","prompt-output-style-input","prompt-artifact-focus-input"]){const el=document.getElementById(id);if(!el) continue;const onChange=()=>{markArtifactsStale(["claims","outline","deep_report","red_team","replication","markdown"]);refreshPromptPreview();};el.addEventListener("change",onChange);el.addEventListener("input",onChange);}
+for(const id of ["api-mode","quality-mode-select","redteam-check","source-policy-input","replication-models-input","replication-runs-input","replication-strategy-select","research-model-input","embedding-model-input","web-search-check","prompt-intent-input","prompt-lens-emphasis-input","prompt-hard-constraints-input","prompt-output-style-input","prompt-artifact-focus-input"]){const el=document.getElementById(id);if(!el) continue;const onChange=()=>{markArtifactsStale(["claims","outline","deep_report","red_team","replication","markdown"]);refreshPromptPreview();};el.addEventListener("change",onChange);el.addEventListener("input",onChange);}
 
 for(const id of ["prompt-preview-kind-select","prompt-preview-disc-select","lens-count-input"]){const el=document.getElementById(id);if(!el) continue;const onPreview=()=>{refreshPromptPreview();};el.addEventListener("change",onPreview);el.addEventListener("input",onPreview);}
 
@@ -207,10 +207,6 @@ document.getElementById("lens-toggle-key-btn")?.addEventListener("click",()=>{co
 document.getElementById("lens-clear-key-btn")?.addEventListener("click",()=>{const inp=document.getElementById("lens-api-key-input");if(inp) inp.value="";document.getElementById("api-key-input").value="";});
 
 syncApiModeNote();
-
-document.getElementById("ca-probe-check")?.addEventListener("change",syncCAOverrideUI);
-
-syncCAOverrideUI();
 
 window.addEventListener("resize",()=>{
   if(plotInited&&activeTab==="plot"&&!galleryActive){try{Plotly.Plots.resize(document.getElementById("plot"));}catch{}}

@@ -13,7 +13,7 @@ export function computeDiscSimilarityMatrix(vectors){const centroids=computeDisc
 
 export function computeDiscSimilarityMatrixForTerms(vectors,terms,discs){
   const safeTerms=Array.isArray(terms)?terms:[];
-  const safeDiscs=(Array.isArray(discs)?discs:DISCS).filter(d=>d&&d.kind!=="ca");
+  const safeDiscs=(Array.isArray(discs)?discs:DISCS).filter(Boolean);
   if(!safeDiscs.length) return null;
   const centroids={};
   for(const disc of safeDiscs){

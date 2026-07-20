@@ -1,16 +1,16 @@
 import { COLORS } from '../core/constants.js';
-import { ARTIFACT_STORE, CALL_LOGS, CA_PROBE_OUTPUT, CITATIONS, CURRENT_RUN_ID, DISCS, DISC_SIM_MATRIX, LAST_RUN, PROJECTION_STABILITY, PROMPT_TEMPLATE_OVERRIDES, RUN_STATE, SEMANTIC_EDGES, TERMS, setCAProbeOutput, setCallLogs, setCitations, setCitationUnmappedSupportingTerms, setCurrentRunId, setDiscs, setDiscSimMatrix, setLastRun, setProjectionStability, setPromptTemplateOverrides, setRunState, setSemanticEdges, setTerms } from '../core/state.js';
+import { ARTIFACT_STORE, CALL_LOGS, CITATIONS, CURRENT_RUN_ID, DISCS, DISC_SIM_MATRIX, LAST_RUN, PROJECTION_STABILITY, PROMPT_TEMPLATE_OVERRIDES, RUN_STATE, SEMANTIC_EDGES, TERMS, setCallLogs, setCitations, setCitationUnmappedSupportingTerms, setCurrentRunId, setDiscs, setDiscSimMatrix, setLastRun, setProjectionStability, setPromptTemplateOverrides, setRunState, setSemanticEdges, setTerms } from '../core/state.js';
 import { clampInt, structuredCloneSafe } from '../core/utils.js';
 import { showToast } from '../ui/notifications.js';
 import { switchMainTab } from '../ui/tabs.js';
-import { renderDisciplineInputs, syncCAOverrideUI } from '../ui/setup-panel.js';
+import { renderDisciplineInputs } from '../ui/setup-panel.js';
 import { refreshPromptPreview, syncPromptPreviewDiscOptions } from '../ui/prompt-preview.js';
 import { buildTerms, inferDescriptionSourceFromLayers, makeAbbr, normalizeTermDescriptions } from '../domain/terms.js';
 import { collectCitations, dedupeCasefold, mergeDescriptionProvenance, normalizeAliasMappingEntry, normalizeSourceType } from '../domain/citations.js';
 import { refreshTermSignalFields } from '../domain/grounding-status.js';
 import { serializeTermForRun } from '../domain/run-metadata.js';
-import { normalizeOddWidth } from '../ca/automata.js';
 import { saveRunToHistory } from './run-history.js';
+import { CURRENT_RUN_SCHEMA_VERSION, migrateImportedRun } from './run-migration.js';
 import { applyFallbackPositions } from '../embedding/projection.js';
 import { showViz } from '../plot/plot-render.js';
 import { clamp01 } from '../plot/plot-overlays.js';
@@ -21,14 +21,16 @@ import { ARTIFACT_DEFS, syncArtifactStoreFromRun } from '../artifacts/artifact-s
 
 export async function importRunFromFile(e){const input=e?.target;const file=input?.files?.[0];if(!file) return;try{const text=await file.text();const data=JSON.parse(text);hydrateRunFromImport(data);showToast("Run imported.");}catch(err){console.error("Import failed:",err);showToast(`Import failed: ${err.message||err}`);}finally{if(input) input.value="";}}
 
+export { migrateImportedRun };
+
 export function hydrateRunFromImport(data){
-  if(!data||typeof data!=="object") throw new Error("Invalid run file.");
-  const target=String(data.target||"").trim();
-  const importedDiscs=Array.isArray(data.discs)?data.discs:[];
-  const importedTerms=Array.isArray(data.terms)?data.terms:[];
+  const migrated=migrateImportedRun(data,{compactAuditTrail:true});
+  const target=String(migrated.target||"").trim();
+  const importedDiscs=Array.isArray(migrated.discs)?migrated.discs:[];
+  const importedTerms=Array.isArray(migrated.terms)?migrated.terms:[];
   if(!target) throw new Error("Missing target.");
   if(importedDiscs.length<2) throw new Error("Run file must include at least 2 probes.");
-  setDiscs(importedDiscs.map((disc,i)=>({id:i,name:String(disc.name||`Probe ${i+1}`),abbr:String(disc.abbr||makeAbbr(String(disc.name||`Probe ${i+1}`))),col:disc.col||COLORS[i%COLORS.length],kind:(disc.kind==="ca"?"ca":"llm")})));
+  setDiscs(importedDiscs.map((disc,i)=>({id:i,name:String(disc.name||`Probe ${i+1}`),abbr:String(disc.abbr||makeAbbr(String(disc.name||`Probe ${i+1}`))),col:disc.col||COLORS[i%COLORS.length],kind:"llm"})));
   if(importedTerms.length){
     setTerms(importedTerms.map(term=>{
       const label=String(term.label||"").trim();
@@ -52,53 +54,36 @@ export function hydrateRunFromImport(data){
       };
     }).filter(t=>t.label));
   }else{
-    const probeResults=Array.isArray(data.probeResults)?data.probeResults:[];
-    const synthResult=data.synthResult&&typeof data.synthResult==="object"?data.synthResult:{convergent:[],contradictory:[],emergent:[]};
+    const probeResults=Array.isArray(migrated.probeResults)?migrated.probeResults:[];
+    const synthResult=migrated.synthResult&&typeof migrated.synthResult==="object"?migrated.synthResult:{convergent:[],contradictory:[],emergent:[]};
     buildTerms(probeResults,synthResult);
     applyFallbackPositions();
   }
-  setDiscSimMatrix(data?.embeddingDiagnostics?.similarityMatrix&&typeof data.embeddingDiagnostics.similarityMatrix==="object"?data.embeddingDiagnostics.similarityMatrix:null);
-  setProjectionStability(data?.embeddingDiagnostics?.projectionStability&&typeof data.embeddingDiagnostics.projectionStability==="object"?data.embeddingDiagnostics.projectionStability:null);
-  setCAProbeOutput(data?.caProbe&&typeof data.caProbe==="object"?data.caProbe:null);
-  if(data?.semanticEdges&&Array.isArray(data.semanticEdges?.relationships)){
-    setSemanticEdges({relationships:data.semanticEdges.relationships.filter(r=>r.term_a&&r.term_b&&typeof r.strength==="number"),generatedAt:data.semanticEdges.generatedAt||new Date().toISOString(),termCount:data.semanticEdges.termCount||0,batchCount:data.semanticEdges.batchCount||1});
+  setDiscSimMatrix(migrated?.embeddingDiagnostics?.similarityMatrix&&typeof migrated.embeddingDiagnostics.similarityMatrix==="object"?migrated.embeddingDiagnostics.similarityMatrix:null);
+  setProjectionStability(migrated?.embeddingDiagnostics?.projectionStability&&typeof migrated.embeddingDiagnostics.projectionStability==="object"?migrated.embeddingDiagnostics.projectionStability:null);
+  if(migrated?.semanticEdges&&Array.isArray(migrated.semanticEdges?.relationships)){
+    setSemanticEdges({relationships:migrated.semanticEdges.relationships.filter(r=>r.term_a&&r.term_b&&typeof r.strength==="number"),generatedAt:migrated.semanticEdges.generatedAt||new Date().toISOString(),termCount:migrated.semanticEdges.termCount||0,batchCount:migrated.semanticEdges.batchCount||1});
   }else{setSemanticEdges(null);}
-  setCitations(Array.isArray(data.citations)?data.citations.map((c,i)=>({id:Number.isInteger(c.id)?c.id:i,source_type:normalizeSourceType(c.source_type,c.publisher),url:c.url||"",title:c.title||"",publisher:c.publisher||"",date:c.date||"",quote_or_snippet:c.quote_or_snippet||"",relevance:c.relevance||"",supporting_terms:Array.isArray(c.supporting_terms)?c.supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[],supporting_terms_raw:Array.isArray(c.supporting_terms_raw)?c.supporting_terms_raw.map(t=>String(t||"").trim()).filter(Boolean):Array.isArray(c.supporting_terms)?c.supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[],supporting_term_mappings:Array.isArray(c.supporting_term_mappings)?c.supporting_term_mappings.map(normalizeAliasMappingEntry).filter(Boolean):[],unmapped_supporting_terms:Array.isArray(c.unmapped_supporting_terms)?c.unmapped_supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[],probeId:c.probeId})):[]);
+  setCitations(Array.isArray(migrated.citations)?migrated.citations.map((c,i)=>({id:Number.isInteger(c.id)?c.id:i,source_type:normalizeSourceType(c.source_type,c.publisher),url:c.url||"",title:c.title||"",publisher:c.publisher||"",date:c.date||"",quote_or_snippet:c.quote_or_snippet||"",relevance:c.relevance||"",supporting_terms:Array.isArray(c.supporting_terms)?c.supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[],supporting_terms_raw:Array.isArray(c.supporting_terms_raw)?c.supporting_terms_raw.map(t=>String(t||"").trim()).filter(Boolean):Array.isArray(c.supporting_terms)?c.supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[],supporting_term_mappings:Array.isArray(c.supporting_term_mappings)?c.supporting_term_mappings.map(normalizeAliasMappingEntry).filter(Boolean):[],unmapped_supporting_terms:Array.isArray(c.unmapped_supporting_terms)?c.unmapped_supporting_terms.map(t=>String(t||"").trim()).filter(Boolean):[],probeId:c.probeId})):[]);
   setCitationUnmappedSupportingTerms(dedupeCasefold(CITATIONS.flatMap(c=>Array.isArray(c.unmapped_supporting_terms)?c.unmapped_supporting_terms:[]),220));
   refreshTermSignalFields(TERMS);
-  setCallLogs(Array.isArray(data.auditTrail)?data.auditTrail:[]);
-  setCurrentRunId(data.runId||null);
-  setRunState({runId:CURRENT_RUN_ID,target,config:data.config||{},probeResults:Array.isArray(data.probeResults)?data.probeResults:[],synthResult:data.synthResult&&typeof data.synthResult==="object"?data.synthResult:{convergent:[],contradictory:[],emergent:[]},generatedAt:data.generatedAt||new Date().toISOString(),caProbe:CA_PROBE_OUTPUT});
-  setLastRun({schemaVersion:data.schemaVersion||6,runId:data.runId||CURRENT_RUN_ID,target,generatedAt:data.generatedAt||new Date().toISOString(),probeResults:Array.isArray(data.probeResults)?data.probeResults:[],synthResult:data.synthResult&&typeof data.synthResult==="object"?data.synthResult:{convergent:[],contradictory:[],emergent:[]},config:data.config&&typeof data.config==="object"?data.config:{},sourcePolicy:data.sourcePolicy||"",report:data.report||"",discs:DISCS.map(d=>({id:d.id,name:d.name,abbr:d.abbr,col:d.col,kind:d.kind||"llm"})),terms:TERMS.map(serializeTermForRun),citations:[...CITATIONS],auditTrail:[...CALL_LOGS],embeddingDiagnostics:{similarityMatrix:structuredCloneSafe(DISC_SIM_MATRIX),projectionStability:structuredCloneSafe(PROJECTION_STABILITY)},claimsLedger:data.claimsLedger||[],redTeamCritique:data.redTeamCritique||"",replication:data.replication||[],outline:data.outline||"",markdown:data.markdown||"",caProbe:CA_PROBE_OUTPUT,semanticEdges:structuredCloneSafe(SEMANTIC_EDGES)});
+  setCallLogs(Array.isArray(migrated.auditTrail)?migrated.auditTrail:[]);
+  setCurrentRunId(migrated.runId||null);
+  setRunState({runId:CURRENT_RUN_ID,target,config:migrated.config||{},probeResults:Array.isArray(migrated.probeResults)?migrated.probeResults:[],synthResult:migrated.synthResult&&typeof migrated.synthResult==="object"?migrated.synthResult:{convergent:[],contradictory:[],emergent:[]},generatedAt:migrated.generatedAt||new Date().toISOString()});
+  setLastRun({schemaVersion:CURRENT_RUN_SCHEMA_VERSION,runId:migrated.runId||CURRENT_RUN_ID,target,generatedAt:migrated.generatedAt||new Date().toISOString(),probeResults:Array.isArray(migrated.probeResults)?migrated.probeResults:[],synthResult:migrated.synthResult&&typeof migrated.synthResult==="object"?migrated.synthResult:{convergent:[],contradictory:[],emergent:[]},config:migrated.config&&typeof migrated.config==="object"?migrated.config:{},sourcePolicy:migrated.sourcePolicy||"",report:migrated.report||"",discs:DISCS.map(d=>({id:d.id,name:d.name,abbr:d.abbr,col:d.col,kind:"llm"})),terms:TERMS.map(serializeTermForRun),citations:[...CITATIONS],auditTrail:[...CALL_LOGS],embeddingDiagnostics:{similarityMatrix:structuredCloneSafe(DISC_SIM_MATRIX),projectionStability:structuredCloneSafe(PROJECTION_STABILITY)},claimsLedger:migrated.claimsLedger||[],redTeamCritique:migrated.redTeamCritique||"",replication:migrated.replication||[],outline:migrated.outline||"",markdown:migrated.markdown||"",semanticEdges:structuredCloneSafe(SEMANTIC_EDGES)});
   document.getElementById("target-input").value=target;
-  const llmDiscs=DISCS.filter(d=>d.kind!=="ca");
-  renderDisciplineInputs(Math.max(2,llmDiscs.length),llmDiscs.map(d=>d.name));
-  if(data?.config?.qualityMode){const qm=document.getElementById("quality-mode-select");if(qm) qm.value=data.config.qualityMode;}
-  if(data?.config?.researchModel){setSelectValuePreserveOption("research-model-input",data.config.researchModel);}
-  if(data?.config?.embeddingModel){setSelectValuePreserveOption("embedding-model-input",data.config.embeddingModel);}
-  if(typeof data?.config?.webSearch==="boolean"){const ws=document.getElementById("web-search-check");if(ws) ws.checked=data.config.webSearch;}
-  if(data?.config?.sourcePolicy){const sp=document.getElementById("source-policy-input");if(sp) sp.value=data.config.sourcePolicy;}
-  if(typeof data?.config?.enableComputationalIrreducibility==="boolean"){
-    const cp=document.getElementById("ca-probe-check");
-    if(cp) cp.checked=data.config.enableComputationalIrreducibility;
-  }else if(typeof data?.config?.caMode==="string"){
-    const cp=document.getElementById("ca-probe-check");
-    if(cp) cp.checked=String(data.config.caMode).trim().toLowerCase()==="run_derived";
-  }else{
-    const cp=document.getElementById("ca-probe-check");
-    if(cp) cp.checked=DISCS.some(d=>d.kind==="ca");
-  }
-  {const cr=document.getElementById("ca-rule-input");const caRuleValue=(data?.config?.caRuleOverride!==undefined&&data?.config?.caRuleOverride!==null)?data.config.caRuleOverride:data?.config?.caRule;if(cr) cr.value=(caRuleValue!==undefined&&caRuleValue!==null)?String(clampInt(caRuleValue,0,255)):"";}
-  {const cs=document.getElementById("ca-steps-input");const caStepsValue=(data?.config?.caStepsOverride!==undefined&&data?.config?.caStepsOverride!==null)?data.config.caStepsOverride:data?.config?.caSteps;if(cs) cs.value=(caStepsValue!==undefined&&caStepsValue!==null)?String(clampInt(caStepsValue,16,240)):"";}
-  {const cw=document.getElementById("ca-width-input");const caWidthValue=(data?.config?.caWidthOverride!==undefined&&data?.config?.caWidthOverride!==null)?data.config.caWidthOverride:data?.config?.caWidth;if(cw) cw.value=(caWidthValue!==undefined&&caWidthValue!==null)?String(normalizeOddWidth(caWidthValue)):"";}
-  syncCAOverrideUI();
-  if(typeof data?.config?.redTeam==="boolean"){const rt=document.getElementById("redteam-check");if(rt) rt.checked=data.config.redTeam;}
-  if(data?.config?.replicationModels){const rm=document.getElementById("replication-models-input");if(rm) rm.value=data.config.replicationModels;}
-  if(data?.config?.replicationRuns){const rr=document.getElementById("replication-runs-input");if(rr) rr.value=String(clampInt(data.config.replicationRuns,1,5));}
-  if(data?.config?.replicationStrategy){const rs=document.getElementById("replication-strategy-select");if(rs) rs.value=data.config.replicationStrategy;}
-  setPromptTemplateOverrides(data?.config?.promptTemplateOverrides&&typeof data.config.promptTemplateOverrides==="object"?structuredCloneSafe(data.config.promptTemplateOverrides):{});
-  syncCAOverrideUI();
-  if(data?.artifacts&&typeof data.artifacts==="object"){for(const key of Object.keys(ARTIFACT_DEFS)){if(data.artifacts[key]){ARTIFACT_STORE[key]={...ARTIFACT_STORE[key],...data.artifacts[key]};}}}
+  renderDisciplineInputs(Math.max(2,DISCS.length),DISCS.map(d=>d.name));
+  if(migrated?.config?.qualityMode){const qm=document.getElementById("quality-mode-select");if(qm) qm.value=migrated.config.qualityMode;}
+  if(migrated?.config?.researchModel){setSelectValuePreserveOption("research-model-input",migrated.config.researchModel);}
+  if(migrated?.config?.embeddingModel){setSelectValuePreserveOption("embedding-model-input",migrated.config.embeddingModel);}
+  if(typeof migrated?.config?.webSearch==="boolean"){const ws=document.getElementById("web-search-check");if(ws) ws.checked=migrated.config.webSearch;}
+  if(migrated?.config?.sourcePolicy){const sp=document.getElementById("source-policy-input");if(sp) sp.value=migrated.config.sourcePolicy;}
+  if(typeof migrated?.config?.redTeam==="boolean"){const rt=document.getElementById("redteam-check");if(rt) rt.checked=migrated.config.redTeam;}
+  if(migrated?.config?.replicationModels){const rm=document.getElementById("replication-models-input");if(rm) rm.value=migrated.config.replicationModels;}
+  if(migrated?.config?.replicationRuns){const rr=document.getElementById("replication-runs-input");if(rr) rr.value=String(clampInt(migrated.config.replicationRuns,1,5));}
+  if(migrated?.config?.replicationStrategy){const rs=document.getElementById("replication-strategy-select");if(rs) rs.value=migrated.config.replicationStrategy;}
+  setPromptTemplateOverrides(migrated?.config?.promptTemplateOverrides&&typeof migrated.config.promptTemplateOverrides==="object"?structuredCloneSafe(migrated.config.promptTemplateOverrides):{});
+  if(migrated?.artifacts&&typeof migrated.artifacts==="object"){for(const key of Object.keys(ARTIFACT_DEFS)){if(migrated.artifacts[key]){ARTIFACT_STORE[key]={...ARTIFACT_STORE[key],...migrated.artifacts[key]};}}}
   if(CITATIONS.length&&!TERMS.some(t=>t.citations&&t.citations.length)) collectCitations();
   syncArtifactStoreFromRun();
   syncPromptPreviewDiscOptions();

@@ -172,24 +172,8 @@
           <div class="workbench-advanced-body">
             <div class="prefs-row-wide">
               <div class="toggle-wrap">
-                <input type="checkbox" id="ca-probe-check"/>
-                <label for="ca-probe-check">Enable computational irreducibility diagnostic</label>
-              </div>
-              <div class="toggle-wrap">
                 <input type="checkbox" id="redteam-check"/>
                 <label for="redteam-check">Enable red-team critique</label>
-              </div>
-            </div>
-            <div class="field-group compact-field" id="ca-override-group" style="display:none">
-              <label>MANUAL OVERRIDE (leave blank for auto-derivation)</label>
-              <div class="mini-grid">
-                <input type="number" id="ca-rule-input" min="0" max="255" placeholder="Rule (auto)" title="manual override for CA rule (0-255)"/>
-                <input type="number" id="ca-steps-input" min="16" max="240" placeholder="Steps (auto)" title="manual override for CA steps (16-240)"/>
-              </div>
-              <input type="number" id="ca-width-input" min="31" max="401" placeholder="Width (auto)" title="manual override for CA width (odd 31-401 preferred)"/>
-              <div class="tiny-note">
-                When blank, all parameters are derived from the run's actual probe topology,
-                synthesis depth, and term count. Manual values override derivation.
               </div>
             </div>
             <div class="field-group">
@@ -482,25 +466,6 @@
         <div class="matrix-note" id="disc-sim-status">No embedding diagnostics yet.</div>
         <div class="matrix-note" id="projection-stability"></div>
         <div class="matrix-wrap" id="disc-sim-matrix"></div>
-      </div>
-      <div id="wa-hotspot-audit">
-        <div class="sec-label">GENERIC INTERPRETATION HOTSPOT AUDIT</div>
-        <div class="matrix-note" id="wa-hotspot-status">No Wolfram interpretation hotspot diagnostics yet.</div>
-        <div class="matrix-wrap" id="wa-hotspot-matrix"></div>
-      </div>
-      <div class="ca-card" id="ca-panel">
-        <div class="sec-label">COMPUTATIONAL IRREDUCIBILITY DIAGNOSTIC</div>
-        <div class="ca-title" id="ca-title"></div>
-        <div class="ca-meta" id="ca-meta"></div>
-        <details>
-          <summary class="ca-meta" style="cursor:pointer">DERIVATION DETAILS</summary>
-          <div class="ca-derivation" id="ca-derivation"></div>
-        </details>
-        <img id="ca-image" alt="Cellular automaton evolution"/>
-        <div class="ca-trajectory-wrap" id="ca-trajectory-wrap">
-          <canvas id="ca-trajectory-canvas" width="280" height="90"></canvas>
-        </div>
-        <div class="ca-meta" id="ca-commentary"></div>
       </div>
       <div id="stats"><div class="sec-label">CORPUS</div><div id="stat-rows"></div></div>
     </div>

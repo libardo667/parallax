@@ -62,10 +62,6 @@ export function applySetupTooltips(){
     "embedding-model-input":"Model used to position nodes in semantic space.",
     "web-search-check":"Allows model responses to use web-grounded retrieval when supported.",
     "source-policy-input":"Source preference and exclusion instructions for the model.",
-    "ca-probe-check":"Enable run-derived computational irreducibility diagnostics.",
-    "ca-rule-input":"Optional manual override for rule (blank = auto-derived).",
-    "ca-steps-input":"Optional manual override for steps (blank = auto-derived).",
-    "ca-width-input":"Optional manual override for width (blank = auto-derived).",
     "quality-mode-select":"Balances speed vs depth and cleanup behavior.",
     "redteam-check":"Generate skeptical critique after synthesis.",
     "replication-models-input":"Comma-separated models for replication checks.",
@@ -105,9 +101,9 @@ export function initGenerationPanelQol(){
     },
     {
       title:"Quality & Replication",
-      help:"CA probe settings, quality profile, red-team pass, and replication controls.",
+      help:"Quality profile, red-team pass, and replication controls.",
       open:false,
-      ids:["ca-probe-check","ca-rule-input","ca-steps-input","ca-width-input","quality-mode-select","redteam-check","replication-models-input","replication-runs-input","replication-strategy-select"]
+      ids:["quality-mode-select","redteam-check","replication-models-input","replication-runs-input","replication-strategy-select"]
     }
   ];
   const stack=document.createElement("div");
@@ -171,13 +167,7 @@ export function clearApiKey(){const input=document.getElementById("api-key-input
 
 export async function generateOrthogonalLenses(){const target=document.getElementById("target-input").value.trim();if(!target){showToast("Enter a target concept first.",{tone:"warning"});return;}const count=clampInt(document.getElementById("lens-count-input")?.value,2,12);const cfg=readApiConfig();const cfgError=validateApiConfig(cfg);if(cfgError){showToast(cfgError,{tone:"error"});return;}const btn=document.getElementById("gen-lenses-btn");const prev=btn.textContent;btn.disabled=true;btn.textContent="GENERATING...";btn.classList.add("llm-busy");try{const defaults=buildLensGenerationPrompt(target,count,cfg);const built=resolvePromptBundleWithOverrides("lens_generation",{target,cfg,quality:getQualityProfile(cfg.qualityMode),defaults});const raw=await callLLMJSON(built.systemPrompt,built.userPrompt,cfg);const parsed=extractJSON(raw);let list=[];if(Array.isArray(parsed)) list=parsed;else if(Array.isArray(parsed.disciplines)) list=parsed.disciplines;else if(Array.isArray(parsed.lenses)) list=parsed.lenses;const cleaned=[];const seen=new Set();for(const item of list){const name=String(item||"").replace(/^\d+[\).\-\s]*/,"").trim();const key=name.toLowerCase();if(!name||seen.has(key)) continue;seen.add(key);cleaned.push(name);}while(cleaned.length<count){const fallback=DEFAULT_DISCS[cleaned.length%DEFAULT_DISCS.length];const key=fallback.toLowerCase();if(!seen.has(key)){seen.add(key);cleaned.push(fallback);}else{cleaned.push(`Lens ${cleaned.length+1}`);}}renderDisciplineInputs(count,cleaned.slice(0,count));showToast(`Generated ${count} orthogonal lenses.`,{tone:"success"});}catch(err){console.error("Lens generation failed:",err);showActionableError(err,{context:"probe generation"});}finally{btn.disabled=false;btn.textContent=prev;btn.classList.remove("llm-busy");refreshPromptPreview();}}
 
-export function syncApiModeNote(){const mode=document.getElementById("api-mode").value;const note=document.getElementById("api-mode-note");const lensNote=document.getElementById("lens-api-mode-note");const proxyMsg="Proxy mode is backend-ready. Add server routes at /api/llm/chat/completions and /api/llm/embeddings.";const directMsg="Direct mode sends model requests from this page (tab-memory key only). CA probe still simulates locally in direct mode.";if(note) note.textContent=mode==="proxy"?proxyMsg:directMsg;if(lensNote) lensNote.textContent=mode==="proxy"?proxyMsg:directMsg;}
-
-export function syncCAOverrideUI(){
-  const enabled=Boolean(document.getElementById("ca-probe-check")?.checked);
-  const group=document.getElementById("ca-override-group");
-  if(group) group.style.display=enabled?"flex":"none";
-}
+export function syncApiModeNote(){const mode=document.getElementById("api-mode").value;const note=document.getElementById("api-mode-note");const lensNote=document.getElementById("lens-api-mode-note");const proxyMsg="Proxy mode keeps model requests and credentials on the local server.";const directMsg="Direct mode sends model requests from this page using a tab-memory key.";if(note) note.textContent=mode==="proxy"?proxyMsg:directMsg;if(lensNote) lensNote.textContent=mode==="proxy"?proxyMsg:directMsg;}
 
 // ── Per-mode state save/restore ───────────────────────────────────────────────
 

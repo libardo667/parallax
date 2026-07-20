@@ -1,7 +1,8 @@
-import { ARTIFACT_STORE, CALL_LOGS, CA_PROBE_OUTPUT, CITATIONS, CURRENT_RUN_ID, DISCS, DISC_SIM_MATRIX, LAST_RUN, PROJECTION_STABILITY, PROMPT_TEMPLATE_OVERRIDES, RUN_STATE, SEMANTIC_EDGES, TERMS } from '../core/state.js';
+import { ARTIFACT_STORE, CALL_LOGS, CITATIONS, CURRENT_RUN_ID, DISCS, DISC_SIM_MATRIX, LAST_RUN, PROJECTION_STABILITY, PROMPT_TEMPLATE_OVERRIDES, RUN_STATE, SEMANTIC_EDGES, TERMS } from '../core/state.js';
 import { clampInt, hashString, structuredCloneSafe } from '../core/utils.js';
 import { callLLMJSON } from '../api/llm.js';
 import { extractJSON } from '../api/json-recovery.js';
+import { CURRENT_RUN_SCHEMA_VERSION, compactCallLog } from '../io/run-migration.js';
 import { defaultDescriptionLayers } from './terms.js';
 import { toCanonicalKey } from './aliases.js';
 import { getTermSignalModel, refreshTermSignalFields } from './grounding-status.js';
@@ -22,14 +23,6 @@ export function safeConfigForRun(cfg){return {
   replicationModels:cfg.replicationModels||"",
   replicationRuns:clampInt(cfg.replicationRuns||1,1,5),
   replicationStrategy:cfg.replicationStrategy||"fixed",
-  enableComputationalIrreducibility:Boolean(cfg.enableComputationalIrreducibility),
-  caMode:Boolean(cfg.enableComputationalIrreducibility)?"run_derived":"disabled",
-  caRuleOverride:Number.isFinite(Number(cfg?.caRuleOverride))?clampInt(Number(cfg.caRuleOverride),0,255):Number.isFinite(Number(cfg?.caRule))?clampInt(Number(cfg.caRule),0,255):null,
-  caStepsOverride:Number.isFinite(Number(cfg?.caStepsOverride))?clampInt(Number(cfg.caStepsOverride),16,240):Number.isFinite(Number(cfg?.caSteps))?clampInt(Number(cfg.caSteps),16,240):null,
-  caWidthOverride:Number.isFinite(Number(cfg?.caWidthOverride))?clampInt(Number(cfg.caWidthOverride),31,401):Number.isFinite(Number(cfg?.caWidth))?clampInt(Number(cfg.caWidth),31,401):null,
-  caRule:Number.isFinite(Number(cfg?.caRuleOverride))?clampInt(Number(cfg.caRuleOverride),0,255):Number.isFinite(Number(cfg?.caRule))?clampInt(Number(cfg.caRule),0,255):null,
-  caSteps:Number.isFinite(Number(cfg?.caStepsOverride))?clampInt(Number(cfg.caStepsOverride),16,240):Number.isFinite(Number(cfg?.caSteps))?clampInt(Number(cfg.caSteps),16,240):null,
-  caWidth:Number.isFinite(Number(cfg?.caWidthOverride))?clampInt(Number(cfg.caWidthOverride),31,401):Number.isFinite(Number(cfg?.caWidth))?clampInt(Number(cfg.caWidth),31,401):null,
   promptTemplateOverrides:structuredCloneSafe(PROMPT_TEMPLATE_OVERRIDES),
   sourceUrls:Array.isArray(cfg.sourceUrls)?cfg.sourceUrls:[],
   sourceByDiscKeys:cfg.sourceByDisc?Object.keys(cfg.sourceByDisc):[]
@@ -60,7 +53,7 @@ export function serializeTermForRun(term){
 export function buildRunSnapshot(target,probeResults,synthResult,cfg){
   refreshTermSignalFields(TERMS);
   return {
-    schemaVersion:6,
+    schemaVersion:CURRENT_RUN_SCHEMA_VERSION,
     runId:CURRENT_RUN_ID||null,
     target,
     probeResults,
@@ -71,7 +64,7 @@ export function buildRunSnapshot(target,probeResults,synthResult,cfg){
     discs:DISCS.map(d=>({id:d.id,name:d.name,abbr:d.abbr,col:d.col,kind:d.kind||"llm"})),
     terms:TERMS.map(serializeTermForRun),
     citations:[...CITATIONS],
-    auditTrail:[...CALL_LOGS],
+    auditTrail:CALL_LOGS.map(compactCallLog).filter(Boolean),
     embeddingDiagnostics:{similarityMatrix:structuredCloneSafe(DISC_SIM_MATRIX),projectionStability:structuredCloneSafe(PROJECTION_STABILITY)},
     artifacts:structuredCloneSafe(ARTIFACT_STORE),
     report:LAST_RUN?.report||"",
@@ -80,7 +73,6 @@ export function buildRunSnapshot(target,probeResults,synthResult,cfg){
     replication:LAST_RUN?.replication||[],
     outline:LAST_RUN?.outline||"",
     markdown:LAST_RUN?.markdown||"",
-    caProbe:structuredCloneSafe(CA_PROBE_OUTPUT),
     semanticEdges:structuredCloneSafe(SEMANTIC_EDGES)
   };
 }

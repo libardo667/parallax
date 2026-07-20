@@ -257,7 +257,6 @@ body.plot-zen .panel-trigger,body.plot-zen .floating-panel,body.plot-zen .panel-
 .matrix-table th{background:var(--panel-soft);color:var(--muted);position:sticky;top:0}
 .matrix-note{font-size:11px;color:var(--muted);line-height:1.5}
 #embedding-diagnostics{display:flex;flex-direction:column;gap:8px}
-#wa-hotspot-audit{display:flex;flex-direction:column;gap:8px}
 #disc-sim-matrix:empty{display:none}
 .filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .filter-grid input,.filter-grid select{font-size:12px;padding:8px 10px}
@@ -265,13 +264,6 @@ body.plot-zen .panel-trigger,body.plot-zen .floating-panel,body.plot-zen .panel-
 .node-hit{font-size:12px;background:var(--panel-alt);border:1px solid var(--border);border-radius:6px;padding:6px 8px;cursor:pointer}
 .node-hit:hover{border-color:var(--accent);color:var(--accent)}
 .node-hit-meta{font-size:11px;color:var(--muted);margin-top:2px}
-.ca-card{display:none;flex-direction:column;gap:8px;border:1px solid var(--border);border-radius:6px;background:var(--panel-alt);padding:10px}
-.ca-card img{width:100%;border:1px solid var(--border);border-radius:4px;background:var(--panel)}
-.ca-meta{font-size:11px;color:var(--muted);line-height:1.45}
-.ca-title{font-size:12px;color:var(--accent);letter-spacing:.4px}
-.ca-derivation{font-size:11px;color:var(--muted);line-height:1.45;white-space:pre-wrap;padding-top:6px}
-.ca-trajectory-wrap{border:1px solid var(--border);border-radius:4px;background:var(--panel);padding:4px}
-.ca-trajectory-wrap canvas{display:block;width:100%;height:auto}
 @media (max-width:900px){#viz-body{flex-direction:column}}
 @media (max-width:700px){.api-row{grid-template-columns:1fr}.prefs-row{grid-template-columns:1fr}.prefs-row-wide{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}.lens-gen-row{grid-template-columns:1fr}.disc-grid{grid-template-columns:1fr}.prompt-workbench{grid-template-columns:1fr}.prompt-preview-controls{grid-template-columns:1fr}.controls-pane{max-height:none}.workbench-sticky-nav{position:static}.run-action-strip{position:static;background:none;border-top:none;padding-top:0}#workbench-resizer{display:none}}
 

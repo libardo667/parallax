@@ -38,7 +38,7 @@ function makeHistoryCard(run) {
     : "unknown date";
   const termCount = Array.isArray(run.terms) ? run.terms.length : "?";
   const citCount = Array.isArray(run.citations) ? run.citations.length : 0;
-  const llmDiscs = (run.discs || []).filter(d => d.kind !== "ca");
+  const llmDiscs = run.discs || [];
   const discChips = llmDiscs.slice(0, 5)
     .map(d => `<span class="history-disc-chip" style="border-color:${escHtml(d.col)};color:${escHtml(d.col)}">${escHtml(d.abbr || d.name)}</span>`)
     .join("");

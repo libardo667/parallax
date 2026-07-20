@@ -45,7 +45,7 @@ export function getActionableErrorMessage(err, { context = "", fallback = "Somet
 
   if (/failed to fetch|networkerror|fetch failed|load failed|could not reach|socket|econnrefused/.test(lower)) {
     if (isProxyMode) {
-      return "Could not reach the local proxy. Start `npm run start`, confirm the app is being served from localhost, and rerun.";
+      return "Could not reach the local proxy. Start `node proxy_server.mjs`, confirm the app is being served from localhost, and rerun.";
     }
     return isDirectMode && isFileProtocol
       ? "Direct mode from file:// is unreliable. Serve the app from localhost, keep a valid OpenRouter key in the setup panel, and rerun."

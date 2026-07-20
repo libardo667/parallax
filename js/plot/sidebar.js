@@ -5,7 +5,6 @@ import { switchMainTab } from '../ui/tabs.js';
 import { rerunProbe } from '../pipeline/reruns.js';
 import { sourceTypeLabel } from '../domain/citations.js';
 import { getTermSignalModel, refreshTermSignalFields } from '../domain/grounding-status.js';
-import { renderCAPanel } from '../ca/render-ca-panel.js';
 import { renderEmbeddingDiagnostics } from '../embedding/diagnostics.js';
 import { renderPlot } from './plot-render.js';
 import { showTermDetail } from './term-detail.js';
@@ -100,5 +99,4 @@ export function buildStats(){
     }
   }
   renderEmbeddingDiagnostics();
-  renderCAPanel();
 }

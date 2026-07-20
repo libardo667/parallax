@@ -51,8 +51,6 @@ export let DISC_SIM_MATRIX=null;
 
 export let PROJECTION_STABILITY=null;
 
-export let CA_PROBE_OUTPUT=null;
-
 export let SEMANTIC_EDGES=null;
 
 export let EVIDENCE_FILTER_STATE={sourceType:"all",termLabel:""};
@@ -105,7 +103,6 @@ export const setCurrentRunId = v => { CURRENT_RUN_ID = v; };
 export const setCitationUnmappedSupportingTerms = v => { CITATION_UNMAPPED_SUPPORTING_TERMS = v; };
 export const setDiscSimMatrix = v => { DISC_SIM_MATRIX = v; };
 export const setProjectionStability = v => { PROJECTION_STABILITY = v; };
-export const setCAProbeOutput = v => { CA_PROBE_OUTPUT = v; };
 export const setSemanticEdges = v => { SEMANTIC_EDGES = v; };
 export const setEvidenceFilterState = v => { EVIDENCE_FILTER_STATE = v; };
 export const setPromptPreviewRendering = v => { PROMPT_PREVIEW_RENDERING = v; };

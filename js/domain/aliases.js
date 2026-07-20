@@ -68,9 +68,6 @@ export function buildTermAliasIndex(){
   };
   for(const term of terms){
     addAlias(term,term.label,"merged_label");
-    const interpretations=Array.isArray(term?.grounding?.wolframInterpretations)?term.grounding.wolframInterpretations:[];
-    for(const interpretation of interpretations){addAlias(term,interpretation,"wolfram_interpretation");}
-    if(term?.grounding?.wolframChosenInterpretation){addAlias(term,term.grounding.wolframChosenInterpretation,"wolfram_chosen");}
   }
   for(const probe of (RUN_STATE?.probeResults||[])){
     for(const probeTerm of (probe?.terms||[])){
