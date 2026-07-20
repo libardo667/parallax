@@ -6,7 +6,7 @@
     "start": "node proxy_server.mjs",
     "check": "node scripts/check-static.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "test": "npm run smoke",
-    "quality:strict": "npm run check && npm run smoke"
+    "test": "node --test scripts/domain-tests.mjs",
+    "quality:strict": "npm run check && npm test && npm run smoke"
   }
 }

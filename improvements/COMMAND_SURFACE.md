@@ -1,36 +1,36 @@
 # Command Surface
 
-This document defines the stable command surface for harness work in this repo.
+This document defines Parallax's stable local command surface.
 
 ## Canonical Commands
 
-- Setup/install: Node.js 18+ is required. There are currently no root runtime
-  dependencies to install.
-- Run backend: `npm run start`
-- Run frontend: `npm run start`
-- Run tests: `npm run smoke`
-- Run static checks: `npm run check`
-- Run strict validation: `npm run quality:strict`
-- Run production-like local stack: `npm run start`
+- Setup/install: Node.js 18+ is required; there are no runtime dependencies to
+  install.
+- Run the local app and proxy: `npm run start`
+- Run domain tests: `npm test`
+- Run static and sample-schema checks: `npm run check`
+- Run the server smoke test: `npm run smoke`
+- Run the full validation path: `npm run quality:strict`
+
+The scripts are thin aliases around direct Node commands. No build step or
+package installation is required.
 
 ## Default Validation Path
 
-Production-critical validation uses only:
+The strict validation path is `npm run quality:strict`, which runs static and
+schema checks, domain tests, and the local server smoke test in that order.
 
-- `npm run check`
-- `npm run smoke`
-- `npm run quality:strict`
-
-These commands validate the default static frontend plus local proxy workflow.
+Together they validate syntax and local assets, the canonical run schema and
+migration boundary, domain behavior, and the default static frontend plus local
+proxy workflow.
 
 ## Optional Paths
 
 The following are outside the default validation path unless a work item says
 otherwise:
 
-- `tools/` helper workspace
 - archived sample-generation or historical analysis artifacts
-- harness documentation and planning files under `improvements/`
+- historical planning and evidence files under `improvements/`
 
 ## Artifact Boundaries
 

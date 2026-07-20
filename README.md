@@ -1,69 +1,42 @@
-# Ruliad Expedition v1
+# Parallax
 
-Local web tool served through a Node.js proxy (`proxy_server.mjs`) with OpenRouter support and an optional experimental Wolfram Alpha integration.
+Parallax is a local multi-perspective research workspace. It probes a concept
+or source from independent lenses, identifies convergence and fault lines, and
+presents the result as both readable research artifacts and an explorable 3D
+map.
 
-## Generative Sculpting Workflow
+## Requirements
 
-The repository now includes a harness-oriented planning and execution layer for
-AI-assisted development:
+- Node.js 18 or newer
+- An OpenRouter API key for new analyses
 
-- Top-level agent entrypoint: `AGENTS.md`
-- Project anchors: `improvements/VISION.md`, `improvements/ROADMAP.md`
-- Stable commands: `improvements/COMMAND_SURFACE.md`
-- Harness reference: `improvements/harness/README.md`
+Loading an included example does not require an API key.
 
-Canonical local commands:
+## Run locally
 
-- `npm run start`
-- `npm run check`
-- `npm run smoke`
-- `npm run quality:strict`
+Set `OPENROUTER_API_KEY` in your environment, then run:
 
-## Prerequisites
+```bash
+npm run start
+```
 
-- Extract this project into its own dedicated folder.
-- Install Node.js v18 or higher from `nodejs.org`. Choose the LTS version. Verify with `node -v`.
-- Create an OpenRouter account and get an API key.
-- Optional: create a Wolfram Alpha account and generate an App ID if you want to try the experimental Wolfram feature.
+Open `http://localhost:8787`. The port can be changed with the `PORT`
+environment variable.
 
-## Start the project (Windows / PowerShell)
+## Validate
 
-1. Open a terminal in this project folder.
-   - Option A: In File Explorer, open the folder and choose **Open in Terminal**.
-   - Option B: Open PowerShell and `cd` to the extracted folder.
-2. Set environment variables:
-   ```powershell
-   $env:OPENROUTER_API_KEY="your_openrouter_api_key"
-   $env:WOLFRAM_APPID="your_wolfram_appid"   # optional
-   ```
-3. Start the proxy server:
-   ```powershell
-   node proxy_server.mjs
-   ```
-4. Open:
-   - `http://localhost:8787`
+```bash
+npm run check
+npm test
+npm run smoke
+npm run quality:strict
+```
 
-## Start the project (macOS / Linux)
+There are no runtime npm dependencies or build step; `package.json` provides
+stable command aliases.
 
-1. Open a terminal and `cd` into this project folder.
-2. Set environment variables:
-   ```bash
-   export OPENROUTER_API_KEY="your_openrouter_api_key"
-   export WOLFRAM_APPID="your_wolfram_appid"   # optional
-   ```
-3. Start the proxy server:
-   ```bash
-   node proxy_server.mjs
-   ```
-4. Open:
-   - `http://localhost:8787`
+## Project direction
 
-## Next Steps
-
-Explore and learn! For Pro/Founding Pro members, A video walkthrough covering the interface and running your first expedition is available in your download files. 
-
-## Notes
-
-- `OPENROUTER_API_KEY` is required for proxying LLM requests unless your client sends an `Authorization` header directly.
-- `WOLFRAM_APPID` is only needed for Wolfram endpoints/features.
-- If you set or change environment variables after the server starts, stop and restart `node proxy_server.mjs`.
+See [the product plan](improvements/PRODUCT_PLAN.md),
+[roadmap](improvements/ROADMAP.md), and
+[run schema](improvements/RUN_SCHEMA.md).

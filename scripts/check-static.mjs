@@ -1,15 +1,22 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
+import {
+  CURRENT_RUN_SCHEMA_VERSION,
+  findRetiredRunPaths
+} from "../js/io/run-migration.js";
 
 const ROOT = process.cwd();
 const REQUIRED_FILES = [
   "index.html",
   "proxy_server.mjs",
   "js/main.js",
+  "js/io/run-migration.js",
   "css/styles.css",
   "README.md",
   "AGENTS.md",
+  "improvements/PRODUCT_PLAN.md",
+  "improvements/RUN_SCHEMA.md",
   "improvements/VISION.md",
   "improvements/ROADMAP.md",
   "improvements/COMMAND_SURFACE.md"
@@ -91,7 +98,18 @@ async function main() {
 
   const sampleRunFiles = await collectFiles("sample_runs", new Set([".json"]));
   for (const relPath of sampleRunFiles) {
-    JSON.parse(await readFile(path.join(ROOT, relPath), "utf8"));
+    const text = await readFile(path.join(ROOT, relPath), "utf8");
+    if (Buffer.byteLength(text) > 2 * 1024 * 1024) {
+      throw new Error(`${relPath} exceeds the 2 MiB active-sample budget`);
+    }
+    const run = JSON.parse(text);
+    if (run.schemaVersion !== CURRENT_RUN_SCHEMA_VERSION) {
+      throw new Error(`${relPath} uses schema ${run.schemaVersion ?? "none"}; expected ${CURRENT_RUN_SCHEMA_VERSION}`);
+    }
+    const retiredPaths = findRetiredRunPaths(run);
+    if (retiredPaths.length) {
+      throw new Error(`${relPath} contains retired data at ${retiredPaths.slice(0, 5).join(", ")}`);
+    }
   }
 
   console.log(

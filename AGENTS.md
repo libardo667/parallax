@@ -1,18 +1,19 @@
 # Agent Entry Guide
 
-This repository uses the agentic harness in `improvements/harness/` as the
-shared execution model for generative sculpting work.
+This repository uses the lightweight work-item system under `improvements/`
+for non-trivial changes. Keep the runtime simple and do not introduce a
+parallel implementation path for behavior that already has an owner.
 
 ## Project Anchors
 
-- Product and architecture intent: `improvements/VISION.md`
+- Durable product and engineering direction: `improvements/PRODUCT_PLAN.md`
+- Concise product and architecture intent: `improvements/VISION.md`
 - Active roadmap and backlog framing: `improvements/ROADMAP.md`
 - Canonical commands and validation path: `improvements/COMMAND_SURFACE.md`
+- Portable run format: `improvements/RUN_SCHEMA.md`
 - Local work-item schemas: `improvements/MAJOR_SCHEMA.md`,
   `improvements/MINOR_SCHEMA.md`
 - Portable harness policy and templates: `improvements/harness/README.md`
-- Legacy product backlog detail: `majors_and_minors.md`
-- Runtime architecture notes: `CLAUDE.md`
 
 ## Execution Rules
 
@@ -26,3 +27,4 @@ shared execution model for generative sculpting work.
 5. Store generated evidence and large historical artifacts under
    `improvements/history/` or `improvements/evidence/`, not in source-of-truth
    runtime paths.
+6. Treat `_archive/` as historical context, not active product surface.
