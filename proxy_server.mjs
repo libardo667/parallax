@@ -26,6 +26,17 @@ const MIME = {
   ".txt": "text/plain; charset=utf-8"
 };
 
+const SAMPLE_RUN_LABELS = {
+  "alien_contact_unintelligibility.json": "Alien Contact Under Unintelligibility",
+  "iran_2.28.26.json": "Iran 2.28.26",
+  "israel_2.28.26.json": "Israel 2.28.26",
+  "money_what_is_valuable.json": "If Money Has No Inherent Value",
+  "why_us_israel_attacking_iran_npr.json": "Why Are the U.S. and Israel Attacking Iran?",
+  "parallax-run-banana-republic-2026-03-01T13-02-00-028Z.json": "Banana Republic Sample Run",
+  "truth_cost_of_falsehood.json": "When Falsehood Becomes Cheap",
+  "trump_tariffs_executive_power.json": "Trump Tariffs And Executive Power"
+};
+
 function send(res, status, body, headers = {}) {
   res.writeHead(status, {
     "Cache-Control": "no-store",
@@ -240,9 +251,10 @@ async function listSampleRuns(req, res) {
       .filter(f => f.endsWith(".json"))
       .map(f => {
         const base = f.replace(/\.json$/, "");
-        const label = base.replace(/[_-]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+        const label = SAMPLE_RUN_LABELS[f] || base.replace(/[_-]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
         return { filename: f, label };
-      });
+      })
+      .sort((a, b) => a.label.localeCompare(b.label));
     send(res, 200, JSON.stringify(runs), { "Content-Type": MIME[".json"] });
   } catch {
     send(res, 200, JSON.stringify([]), { "Content-Type": MIME[".json"] });

@@ -6,7 +6,7 @@
 - Title: Try It Without an API Key - Sample Run Loader Completion
 - Type: major
 - Owner: unassigned
-- Status: ready
+- Status: done
 - Risk: medium
 - Target Window: TBD
 - Depends On: none
@@ -60,11 +60,11 @@ Planned file-level touchpoints:
 
 ## Acceptance Criteria
 
-- [ ] The example loader supports a broader active sample library than the
+- [x] The example loader supports a broader active sample library than the
       current minimal set
-- [ ] Legacy sample assets are either migrated in code or regenerated with the
+- [x] Legacy sample assets are either migrated in code or regenerated with the
       current schema
-- [ ] Runtime sample assets and archived historical outputs have a clear storage
+- [x] Runtime sample assets and archived historical outputs have a clear storage
       boundary
 
 ## Validation Commands

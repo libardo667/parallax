@@ -1,0 +1,3523 @@
+{
+  "schemaVersion": 7,
+  "runId": "run_92d8ca2f",
+  "target": "Why are the U.S. and Israel attacking Iran? : NPR",
+  "probeResults": [
+    {
+      "discId": 0,
+      "summary": "From a left perspective, the sources portray the U.S./Israel attacks as driven by claims of preventing Iranian nuclear proliferation and responding to regional destabilization, while foregrounding humanitarian concerns about civilian impacts. Albanese frames support through anti-regime rhetoric about oppression, while BBC/NPR highlight disputed justifications and escalatory risks.",
+      "terms": [
+        {
+          "label": "Nuclear Proliferation Prevention",
+          "centrality": 0.95,
+          "descriptions": {
+            "probeSummary": "Primary stated justification for attacks based on claims of Iran's covert nuclear weapons program",
+            "synthesisSummary": "",
+            "displayDescription": "Primary stated justification for attacks based on claims of Iran's covert nuclear weapons program",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Primary stated justification for attacks based on claims of Iran's covert nuclear weapons program",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Regime Oppression",
+          "centrality": 0.85,
+          "descriptions": {
+            "probeSummary": "Emphasis on Iranian government's domestic crackdowns and attacks on minority groups",
+            "synthesisSummary": "",
+            "displayDescription": "Emphasis on Iranian government's domestic crackdowns and attacks on minority groups",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Emphasis on Iranian government's domestic crackdowns and attacks on minority groups",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Preemptive Military Action",
+          "centrality": 0.9,
+          "descriptions": {
+            "probeSummary": "Israel's stated doctrine of striking first against perceived existential threats",
+            "synthesisSummary": "",
+            "displayDescription": "Israel's stated doctrine of striking first against perceived existential threats",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Israel's stated doctrine of striking first against perceived existential threats",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Humanitarian Consequences",
+          "centrality": 0.8,
+          "descriptions": {
+            "probeSummary": "Focus on civilian evacuations, metro shelters, and impossible safety for Tehran's 10M residents",
+            "synthesisSummary": "",
+            "displayDescription": "Focus on civilian evacuations, metro shelters, and impossible safety for Tehran's 10M residents",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Focus on civilian evacuations, metro shelters, and impossible safety for Tehran's 10M residents",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Geopolitical Alignment",
+          "centrality": 0.75,
+          "descriptions": {
+            "probeSummary": "Australia/US/Israel coordination framed as containing Iranian regional influence",
+            "synthesisSummary": "",
+            "displayDescription": "Australia/US/Israel coordination framed as containing Iranian regional influence",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Australia/US/Israel coordination framed as containing Iranian regional influence",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Intelligence Disputes",
+          "centrality": 0.7,
+          "descriptions": {
+            "probeSummary": "Noted gaps between Israeli claims and IAEA/US assessments of Iran's nuclear timeline",
+            "synthesisSummary": "",
+            "displayDescription": "Noted gaps between Israeli claims and IAEA/US assessments of Iran's nuclear timeline",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Noted gaps between Israeli claims and IAEA/US assessments of Iran's nuclear timeline",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Retaliatory Risks",
+          "centrality": 0.85,
+          "descriptions": {
+            "probeSummary": "Warnings about attacks on US troops, global flight disruptions, and regional proxy warfare escalation",
+            "synthesisSummary": "",
+            "displayDescription": "Warnings about attacks on US troops, global flight disruptions, and regional proxy warfare escalation",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Warnings about attacks on US troops, global flight disruptions, and regional proxy warfare escalation",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        }
+      ],
+      "claims_or_findings": [
+        "Israel claims preemptive strikes were necessary due to Iran's alleged imminent nuclear capability despite contradictory international assessments",
+        "Australian support emphasizes anti-regime solidarity over explicit military endorsement",
+        "Civilian evacuation impracticalities highlight disproportionate humanitarian costs"
+      ],
+      "citations": [
+        {
+          "url": "https://www.bbc.com/news/articles/clyn3jx2nxqo",
+          "title": "Your questions answered on the Israel-Iran conflict",
+          "publisher": "BBC",
+          "date": "2025-06-18",
+          "quote_or_snippet": "Iran was accelerating towards building a nuclear weapon...not necessarily shared by IAEA/US intelligence",
+          "relevance": "Shows disputed justification for attacks",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Intelligence Disputes",
+            "Nuclear Proliferation Prevention"
+          ],
+          "supporting_terms_raw": [
+            "Intelligence Disputes",
+            "Nuclear Proliferation Prevention"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.npr.org/transcripts/nx-s1-5432480",
+          "title": "Why Israel attacked Iran, and what it could mean for the U.S.",
+          "publisher": "NPR",
+          "date": "2025-06-13",
+          "quote_or_snippet": "We learned that lesson from October 7 - we will not wait to be surprised again",
+          "relevance": "Explains preemptive strike doctrine",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Preemptive Military Action"
+          ],
+          "supporting_terms_raw": [
+            "Preemptive Military Action"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://7news.com.au/news/australia-reacts-to-us-israel-attack-on-iran-as-world-watches-conflict-unfold-c-21788860",
+          "title": "Australia reacts to US, Israel attack on Iran",
+          "publisher": "7NEWS",
+          "date": "2026-02-28",
+          "quote_or_snippet": "Stands with brave people of Iran in struggle against oppression",
+          "relevance": "Frames support through anti-regime rhetoric",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Regime Oppression",
+            "Geopolitical Alignment"
+          ],
+          "supporting_terms_raw": [
+            "Regime Oppression",
+            "Geopolitical Alignment"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        }
+      ],
+      "confidence_notes": "Analysis limited to provided sources; lacks explicit progressive critiques of imperialism/energy politics. BBC/NPR sourcing provides balance but Australian sources dominate governmental framing."
+    },
+    {
+      "discId": 1,
+      "summary": "The sources portray the U.S.-Israel strikes on Iran as a preemptive military operation ('Epic Fury') justified by failed nuclear negotiations and perceived threats, while emphasizing civilian casualties, escalatory regional retaliation, and Trump's explicit regime change agenda. NPR's coverage balances security narratives with critiques of humanitarian impacts and lack of congressional oversight.",
+      "terms": [
+        {
+          "label": "Operation Epic Fury",
+          "centrality": 1,
+          "descriptions": {
+            "probeSummary": "Coordinated U.S.-Israel military strikes targeting Iranian leadership and infrastructure, framed as preemptive defense against nuclear threats.",
+            "synthesisSummary": "",
+            "displayDescription": "Coordinated U.S.-Israel military strikes targeting Iranian leadership and infrastructure, framed as preemptive defense against nuclear threats.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Coordinated U.S.-Israel military strikes targeting Iranian leadership and infrastructure, framed as preemptive defense against nuclear threats.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Regime change agenda",
+          "centrality": 0.95,
+          "descriptions": {
+            "probeSummary": "Trump's stated goal to enable Iranians to 'take over your government' through military action, as quoted in multiple NPR sources.",
+            "synthesisSummary": "",
+            "displayDescription": "Trump's stated goal to enable Iranians to 'take over your government' through military action, as quoted in multiple NPR sources.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Trump's stated goal to enable Iranians to 'take over your government' through military action, as quoted in multiple NPR sources.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Humanitarian toll",
+          "centrality": 0.9,
+          "descriptions": {
+            "probeSummary": "Civilian casualties including 53 students killed in a Tehran school strike, per Iranian state media reports cited by NPR.",
+            "synthesisSummary": "",
+            "displayDescription": "Civilian casualties including 53 students killed in a Tehran school strike, per Iranian state media reports cited by NPR.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Civilian casualties including 53 students killed in a Tehran school strike, per Iranian state media reports cited by NPR.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Maximum pressure campaign",
+          "centrality": 0.85,
+          "descriptions": {
+            "probeSummary": "Trump's policy context combining sanctions and military action against Iran, referenced through prior NPR reporting on economic sanctions.",
+            "synthesisSummary": "",
+            "displayDescription": "Trump's policy context combining sanctions and military action against Iran, referenced through prior NPR reporting on economic sanctions.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Trump's policy context combining sanctions and military action against Iran, referenced through prior NPR reporting on economic sanctions.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Ballistic missile retaliation",
+          "centrality": 0.8,
+          "descriptions": {
+            "probeSummary": "Iran's response striking U.S. bases in Gulf states and Israel, killing a migrant worker in UAE per Defense Ministry reports.",
+            "synthesisSummary": "",
+            "displayDescription": "Iran's response striking U.S. bases in Gulf states and Israel, killing a migrant worker in UAE per Defense Ministry reports.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iran's response striking U.S. bases in Gulf states and Israel, killing a migrant worker in UAE per Defense Ministry reports.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Nuclear program stalemate",
+          "centrality": 0.75,
+          "descriptions": {
+            "probeSummary": "Failed negotiations between Trump administration and Iran referenced as key justification for military action.",
+            "synthesisSummary": "",
+            "displayDescription": "Failed negotiations between Trump administration and Iran referenced as key justification for military action.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Failed negotiations between Trump administration and Iran referenced as key justification for military action.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Existential threat framing",
+          "centrality": 0.7,
+          "descriptions": {
+            "probeSummary": "Netanyahu's claimed rationale for strikes as necessary to 'remove the threat posed by the terrorist regime' (NHPR source).",
+            "synthesisSummary": "",
+            "displayDescription": "Netanyahu's claimed rationale for strikes as necessary to 'remove the threat posed by the terrorist regime' (NHPR source).",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Netanyahu's claimed rationale for strikes as necessary to 'remove the threat posed by the terrorist regime' (NHPR source).",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Sovereignty violation claims",
+          "centrality": 0.65,
+          "descriptions": {
+            "probeSummary": "Iranian condemnation of strikes as 'gross violation' of national sovereignty per Foreign Ministry statements.",
+            "synthesisSummary": "",
+            "displayDescription": "Iranian condemnation of strikes as 'gross violation' of national sovereignty per Foreign Ministry statements.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iranian condemnation of strikes as 'gross violation' of national sovereignty per Foreign Ministry statements.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        }
+      ],
+      "claims_or_findings": [
+        "Strikes explicitly targeted Supreme Leader Khamenei and President Pezeshkian according to NPR sources",
+        "Civilian infrastructure including a girls' school was hit according to Iranian state media",
+        "Operation followed failed nuclear talks led by Trump's envoys Jared Kushner and Steve Witkoff",
+        "Trump directly encouraged regime overthrow in video statements to Iranians"
+      ],
+      "citations": [
+        {
+          "url": "https://www.npr.org/2026/02/28/nx-s1-5730158/israel-iran-strikes",
+          "title": "Explosions heard in Tehran as Israel launches strike",
+          "publisher": "NPR",
+          "date": "2026-02-28",
+          "quote_or_snippet": "\"targeting Iranian Supreme Leader Ayatollah Ali Khamenei and the Iranian President\"",
+          "relevance": "Supports leadership targeting claim",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Operation Epic Fury",
+            "Existential threat framing"
+          ],
+          "supporting_terms_raw": [
+            "Operation Epic Fury",
+            "Existential threat framing"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.npr.org/2026/02/28/nx-s1-5730158/israel-iran-strikes",
+          "title": "Explosions heard in Tehran as Israel launches strike",
+          "publisher": "NPR",
+          "date": "2026-02-28",
+          "quote_or_snippet": "\"U.S.-Israeli strikes hit a girls' school, killing dozens\"",
+          "relevance": "Documents civilian impact",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Humanitarian toll",
+            "Sovereignty violation claims"
+          ],
+          "supporting_terms_raw": [
+            "Humanitarian toll",
+            "Sovereignty violation claims"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.nhpr.org/2026-02-28/israel-and-the-u-s-launch-strikes-against-iran",
+          "title": "Trump announces 'major combat operations' in Iran",
+          "publisher": "New Hampshire Public Radio",
+          "date": "2026-02-28",
+          "quote_or_snippet": "\"failed to renounce their nuclear ambitions\" despite U.S. deals",
+          "relevance": "Supports nuclear stalemate context",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Nuclear program stalemate",
+            "Maximum pressure campaign"
+          ],
+          "supporting_terms_raw": [
+            "Nuclear program stalemate",
+            "Maximum pressure campaign"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.iowapublicradio.org/news-from-npr/2026-02-28/israel-and-the-u-s-launch-strikes-against-iran",
+          "title": "Trump announces 'major combat operations' in Iran",
+          "publisher": "Iowa Public Radio",
+          "date": "2026-02-28",
+          "quote_or_snippet": "\"take over your government, it will be yours to take\"",
+          "relevance": "Direct regime change encouragement",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Regime change agenda",
+            "Operation Epic Fury"
+          ],
+          "supporting_terms_raw": [
+            "Regime change agenda",
+            "Operation Epic Fury"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        }
+      ],
+      "confidence_notes": "Analysis relies on NPR affiliate reporting but notes: 1) Some casualty figures come from Iranian state media (IRNA). 2) Target verification (e.g., Khamenei status) remains unconfirmed. 3) No independent verification of nuclear threat claims. 4) Limited perspective from Iranian officials beyond Foreign Ministry statements."
+    },
+    {
+      "discId": 2,
+      "summary": "The sources portray the U.S. and Israel attacking Iran as pre-emptive strikes aimed at dismantling perceived nuclear and military threats, framed within prolonged tensions over Iran's nuclear program and domestic crackdowns. Iran retaliated with regional missile attacks, escalating conflict despite international calls for de-escalation. Civilian impacts and regime fragility are emphasized as key contextual factors.",
+      "terms": [
+        {
+          "label": "Pre-emptive strikes",
+          "centrality": 0.95,
+          "descriptions": {
+            "probeSummary": "Military actions justified as preventing imminent nuclear/military threats from Iran",
+            "synthesisSummary": "",
+            "displayDescription": "Military actions justified as preventing imminent nuclear/military threats from Iran",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Military actions justified as preventing imminent nuclear/military threats from Iran",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Nuclear program",
+          "centrality": 0.93,
+          "descriptions": {
+            "probeSummary": "Iran's disputed uranium enrichment activities cited as primary justification for attacks",
+            "synthesisSummary": "",
+            "displayDescription": "Iran's disputed uranium enrichment activities cited as primary justification for attacks",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iran's disputed uranium enrichment activities cited as primary justification for attacks",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Military threats",
+          "centrality": 0.88,
+          "descriptions": {
+            "probeSummary": "Iranian ballistic missile capabilities and proxy networks triggering defensive action",
+            "synthesisSummary": "",
+            "displayDescription": "Iranian ballistic missile capabilities and proxy networks triggering defensive action",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iranian ballistic missile capabilities and proxy networks triggering defensive action",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Civilian casualties",
+          "centrality": 0.85,
+          "descriptions": {
+            "probeSummary": "Unverified reports of civilian deaths used to highlight humanitarian consequences",
+            "synthesisSummary": "",
+            "displayDescription": "Unverified reports of civilian deaths used to highlight humanitarian consequences",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Unverified reports of civilian deaths used to highlight humanitarian consequences",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Regional destabilization",
+          "centrality": 0.82,
+          "descriptions": {
+            "probeSummary": "Escalation through Iranian retaliation across Middle Eastern targets",
+            "synthesisSummary": "",
+            "displayDescription": "Escalation through Iranian retaliation across Middle Eastern targets",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Escalation through Iranian retaliation across Middle Eastern targets",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Domestic crackdowns",
+          "centrality": 0.78,
+          "descriptions": {
+            "probeSummary": "Iran's violent suppression of protests cited as secondary rationale for intervention",
+            "synthesisSummary": "",
+            "displayDescription": "Iran's violent suppression of protests cited as secondary rationale for intervention",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iran's violent suppression of protests cited as secondary rationale for intervention",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Airspace closures",
+          "centrality": 0.75,
+          "descriptions": {
+            "probeSummary": "Operational security measure impacting civilian travel during conflict",
+            "synthesisSummary": "",
+            "displayDescription": "Operational security measure impacting civilian travel during conflict",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Operational security measure impacting civilian travel during conflict",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Regime fragility",
+          "centrality": 0.72,
+          "descriptions": {
+            "probeSummary": "Analyst warnings about Iran's internal instability affecting retaliation calculus",
+            "synthesisSummary": "",
+            "displayDescription": "Analyst warnings about Iran's internal instability affecting retaliation calculus",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Analyst warnings about Iran's internal instability affecting retaliation calculus",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        }
+      ],
+      "claims_or_findings": [
+        "US-Israel framed attacks as pre-emptive against imminent nuclear/military threats",
+        "Iran retaliated with cross-regional missile strikes despite air defense interceptions",
+        "International responses condemned civilian impacts while avoiding direct endorsement of strikes",
+        "Prior US military deployments signaled escalating readiness for conflict"
+      ],
+      "citations": [
+        {
+          "url": "https://www.bbc.com/news/articles/cx2dyz6p3weo",
+          "title": "What is happening in Iran? What we know about US-Israel attack and Tehran response",
+          "publisher": "BBC",
+          "date": "2026",
+          "quote_or_snippet": "pre-emptive strikes aimed at dismantling perceived nuclear and military threats",
+          "relevance": "Core justification for attacks",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Pre-emptive strikes",
+            "Nuclear program"
+          ],
+          "supporting_terms_raw": [
+            "Pre-emptive strikes",
+            "Nuclear program"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.bbc.com/news/articles/cx2dyz6p3weo",
+          "title": "What is happening in Iran? What we know about US-Israel attack and Tehran response",
+          "publisher": "BBC",
+          "date": "2026",
+          "quote_or_snippet": "Iran launched missiles at Israel, Bahrain, Qatar, Jordan, Kuwait, and UAE",
+          "relevance": "Demonstrates regional retaliation",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Regional destabilization",
+            "Military threats"
+          ],
+          "supporting_terms_raw": [
+            "Regional destabilization",
+            "Military threats"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.bbc.co.uk/news/articles/cly5pd98z87o",
+          "title": "Context from Prior BBC Articles",
+          "publisher": "BBC",
+          "date": "2026",
+          "quote_or_snippet": "US military buildup signaled escalating readiness",
+          "relevance": "Shows pre-conflict preparations",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Military threats",
+            "Regime fragility"
+          ],
+          "supporting_terms_raw": [
+            "Military threats",
+            "Regime fragility"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        }
+      ],
+      "confidence_notes": "Analysis limited to provided BBC sources; casualty figures and military objectives remain partially unverified. Contextual connections to nuclear negotiations inferred from described tensions rather than explicit sourcing."
+    },
+    {
+      "discId": 3,
+      "summary": "The sources portray the U.S. and Israeli strikes as preemptive actions to counter Iran’s nuclear ambitions and destabilizing regional influence, framed as necessary to protect national security interests. Supportive nations like Canada and the UK emphasize Iran’s role as a 'principal source of instability,' while critics warn of escalating conflict risks.",
+      "terms": [
+        {
+          "label": "Nuclear ambitions",
+          "centrality": 0.95,
+          "descriptions": {
+            "probeSummary": "Iran’s alleged pursuit of nuclear weapons, cited as the primary justification for preemptive strikes.",
+            "synthesisSummary": "",
+            "displayDescription": "Iran’s alleged pursuit of nuclear weapons, cited as the primary justification for preemptive strikes.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iran’s alleged pursuit of nuclear weapons, cited as the primary justification for preemptive strikes.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Preemptive action",
+          "centrality": 0.9,
+          "descriptions": {
+            "probeSummary": "The U.S.-Israel rationale for attacking Iran to neutralize perceived imminent threats.",
+            "synthesisSummary": "",
+            "displayDescription": "The U.S.-Israel rationale for attacking Iran to neutralize perceived imminent threats.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "The U.S.-Israel rationale for attacking Iran to neutralize perceived imminent threats.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Regional destabilization",
+          "centrality": 0.85,
+          "descriptions": {
+            "probeSummary": "Iran’s role in fostering instability, a key motivator for allied military intervention.",
+            "synthesisSummary": "",
+            "displayDescription": "Iran’s role in fostering instability, a key motivator for allied military intervention.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iran’s role in fostering instability, a key motivator for allied military intervention.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Coordinated operation",
+          "centrality": 0.8,
+          "descriptions": {
+            "probeSummary": "Joint U.S.-Israel strikes targeting Iranian nuclear/military infrastructure.",
+            "synthesisSummary": "",
+            "displayDescription": "Joint U.S.-Israel strikes targeting Iranian nuclear/military infrastructure.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Joint U.S.-Israel strikes targeting Iranian nuclear/military infrastructure.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Regime overthrow",
+          "centrality": 0.75,
+          "descriptions": {
+            "probeSummary": "Implied goal of weakening Iran’s leadership, per Trump’s call for Iranians to 'take over your government.'",
+            "synthesisSummary": "",
+            "displayDescription": "Implied goal of weakening Iran’s leadership, per Trump’s call for Iranians to 'take over your government.'",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Implied goal of weakening Iran’s leadership, per Trump’s call for Iranians to 'take over your government.'",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Retaliatory strikes",
+          "centrality": 0.7,
+          "descriptions": {
+            "probeSummary": "Iran’s missile attacks on U.S. bases and allies, framed as evidence of its threat.",
+            "synthesisSummary": "",
+            "displayDescription": "Iran’s missile attacks on U.S. bases and allies, framed as evidence of its threat.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Iran’s missile attacks on U.S. bases and allies, framed as evidence of its threat.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Sovereignty violations",
+          "centrality": 0.65,
+          "descriptions": {
+            "probeSummary": "Critics’ argument against unilateral military action in Iran.",
+            "synthesisSummary": "",
+            "displayDescription": "Critics’ argument against unilateral military action in Iran.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Critics’ argument against unilateral military action in Iran.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        },
+        {
+          "label": "Civilian casualties",
+          "centrality": 0.6,
+          "descriptions": {
+            "probeSummary": "Deaths from strikes and debris, noted but secondary to strategic objectives.",
+            "synthesisSummary": "",
+            "displayDescription": "Deaths from strikes and debris, noted but secondary to strategic objectives.",
+            "displayDescriptionReason": "probeSummary"
+          },
+          "description": "Deaths from strikes and debris, noted but secondary to strategic objectives.",
+          "description_source": "llm",
+          "description_provenance": [
+            {
+              "source": "llm",
+              "stage": "probe",
+              "note": "Original probe model description"
+            }
+          ]
+        }
+      ],
+      "claims_or_findings": [
+        "The strikes targeted Iranian nuclear facilities and leadership to prevent weaponization.",
+        "Iran’s retaliatory attacks on Gulf states validated U.S.-Israel security concerns.",
+        "Allied support (e.g., Canada, UK) framed Iran as a primary destabilizing force."
+      ],
+      "citations": [
+        {
+          "url": "https://www.foxnews.com/world/world-leaders-split-over-military-action-us-israel-strike-iran-coordinated-operation",
+          "title": "US and Israel strike Iran as world leaders split sharply on response",
+          "publisher": "Fox News",
+          "date": "2026-02-28",
+          "quote_or_snippet": "Iran must never be allowed to obtain or develop nuclear weapons… [It is] the principal source of instability and terror.",
+          "relevance": "Supports 'nuclear ambitions' and 'regional destabilization' terms",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Nuclear ambitions",
+            "Regional destabilization"
+          ],
+          "supporting_terms_raw": [
+            "Nuclear ambitions",
+            "Regional destabilization"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.foxnews.com/world/world-leaders-split-over-military-action-us-israel-strike-iran-coordinated-operation",
+          "title": "US and Israel strike Iran as world leaders split sharply on response",
+          "publisher": "Fox News",
+          "date": "2026-02-28",
+          "quote_or_snippet": "Targeted Iranian nuclear and military sites, including Supreme Leader Ali Khamenei’s offices.",
+          "relevance": "Grounds 'preemptive action' and 'coordinated operation' claims",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Preemptive action",
+            "Coordinated operation"
+          ],
+          "supporting_terms_raw": [
+            "Preemptive action",
+            "Coordinated operation"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        },
+        {
+          "url": "https://www.foxnews.com/world/world-leaders-split-over-military-action-us-israel-strike-iran-coordinated-operation",
+          "title": "US and Israel strike Iran as world leaders split sharply on response",
+          "publisher": "Fox News",
+          "date": "2026-02-28",
+          "quote_or_snippet": "Iranian missiles hit a U.S. Navy base in Bahrain and residential areas in the UAE.",
+          "relevance": "Validates 'retaliatory strikes' as evidence of threat",
+          "source_type": "major journalism",
+          "supporting_terms": [
+            "Retaliatory strikes"
+          ],
+          "supporting_terms_raw": [
+            "Retaliatory strikes"
+          ],
+          "supporting_term_mappings": [],
+          "unmapped_supporting_terms": []
+        }
+      ],
+      "confidence_notes": "Analysis relies on a single Fox News source with inherent editorial bias toward U.S.-Israel actions. Limited data on Iranian civilian impacts or third-party verification of nuclear claims. Terms like 'regime overthrow' are inferred from Trump’s statements but not explicitly stated as an operational goal."
+    }
+  ],
+  "synthResult": {
+    "convergent": [
+      {
+        "label": "Preemptive military justification",
+        "description": "All disciplines reference preemptive strikes as core justification, framed as preventing nuclear/military threats despite varying assessments of validity",
+        "disciplines": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "label": "Civilian casualties focus",
+        "description": "Left/Center perspectives emphasize civilian infrastructure impacts (e.g. girls’ school bombing) as central consequence, while Right minimizes this",
+        "disciplines": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "label": "Regime change agenda",
+        "description": "Explicit Trump-Netanyahu regime overthrow objective noted across Left, Center-Left, and Right analyses",
+        "disciplines": [
+          0,
+          1,
+          3
+        ]
+      },
+      {
+        "label": "Retaliatory escalation risks",
+        "description": "Three disciplines stress Iranian missile responses and regional destabilization as inevitable consequence",
+        "disciplines": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "contradictory": [
+      {
+        "label": "Humanitarian costs vs. security necessity",
+        "description": "Left frames civilian deaths as disproportionate, while Right legitimizes strikes as unavoidable collateral for national security",
+        "disciplines": [
+          0,
+          3
+        ]
+      },
+      {
+        "label": "Intelligence validity disputes",
+        "description": "Left cites contradictory international nuclear assessments undermining preemptive justification, while Center accepts imminent threat framing",
+        "disciplines": [
+          0,
+          2
+        ]
+      },
+      {
+        "label": "Regime stability assumptions",
+        "description": "Center-Left questions if strikes strengthen authoritarian rule, while Right assumes regime fragility enables overthrow",
+        "disciplines": [
+          1,
+          3
+        ]
+      }
+    ],
+    "emergent": [
+      {
+        "label": "Multi-axis conflict escalation",
+        "description": "Integration reveals three simultaneous wars: military (U.S./Israel vs Iran), diplomatic (nuclear negotiations collapse), and ideological (regime change vs sovereignty)"
+      },
+      {
+        "label": "Trump-Netanyahu synergy paradox",
+        "description": "Cross-analysis shows Trump’s anti-war rhetoric contradicted by operational coordination with Netanyahu’s decades-long Iran attack agenda"
+      },
+      {
+        "label": "Proxy war inversion",
+        "description": "Strikes invert traditional Middle East dynamics - U.S. becomes direct combatant rather than relying on regional proxies"
+      },
+      {
+        "label": "Civilianization of deterrence",
+        "description": "Iran’s retaliation against Gulf states transforms civilian migrant workers/urban centers into deliberate escalation vectors"
+      }
+    ]
+  },
+  "generatedAt": "2026-02-28T15:37:05.747Z",
+  "config": {
+    "mode": "proxy",
+    "researchModel": "deepseek/deepseek-r1",
+    "embeddingModel": "qwen/qwen3-embedding-8b",
+    "qualityMode": "balanced",
+    "webSearch": true,
+    "sourcePolicy": "",
+    "redTeam": false,
+    "replicationModels": "",
+    "replicationRuns": 1,
+    "replicationStrategy": "fixed",
+    "promptTemplateOverrides": {},
+    "sourceUrls": [
+      "https://www.theguardian.com/australia-news/2026/feb/28/australians-warned-that-iran-attack-increases-risk-of-further-escalation-and-flight-cancellations-in-region",
+      "https://www.npr.org/2026/02/28/g-s1-112026/why-is-the-u-s-attacking-iran",
+      "https://www.bbc.com/news/articles/cx2dyz6p3weo?at_medium=RSS&at_campaign=rss",
+      "https://www.foxnews.com/world/world-leaders-split-over-military-action-us-israel-strike-iran-coordinated-operation"
+    ],
+    "sourceByDiscKeys": [
+      "Left",
+      "Center-Left",
+      "Center",
+      "Right"
+    ]
+  },
+  "sourcePolicy": "",
+  "discs": [
+    {
+      "id": 0,
+      "name": "Left",
+      "abbr": "LE",
+      "col": "#3b82f6",
+      "kind": "llm"
+    },
+    {
+      "id": 1,
+      "name": "Center-Left",
+      "abbr": "CE",
+      "col": "#6792d7",
+      "kind": "llm"
+    },
+    {
+      "id": 2,
+      "name": "Center",
+      "abbr": "CE",
+      "col": "#94a3b8",
+      "kind": "llm"
+    },
+    {
+      "id": 3,
+      "name": "Right",
+      "abbr": "RI",
+      "col": "#ef4444",
+      "kind": "llm"
+    }
+  ],
+  "terms": [
+    {
+      "label": "Nuclear Proliferation Prevention",
+      "description": "Primary stated justification for attacks based on claims of Iran's covert nuclear weapons program",
+      "descriptions": {
+        "probeSummary": "Primary stated justification for attacks based on claims of Iran's covert nuclear weapons program",
+        "synthesisSummary": "",
+        "displayDescription": "Primary stated justification for attacks based on claims of Iran's covert nuclear weapons program",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.95,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        -0.007918797195203685,
+        -0.7780353005230876,
+        0.5860397105500637
+      ],
+      "citations": [
+        0
+      ],
+      "aliases": [
+        "Nuclear Proliferation Prevention"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.587,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Regime Oppression",
+      "description": "Emphasis on Iranian government's domestic crackdowns and attacks on minority groups",
+      "descriptions": {
+        "probeSummary": "Emphasis on Iranian government's domestic crackdowns and attacks on minority groups",
+        "synthesisSummary": "",
+        "displayDescription": "Emphasis on Iranian government's domestic crackdowns and attacks on minority groups",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.85,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        -0.5646921312987452,
+        0.03651567059025295,
+        0.5878339810029158
+      ],
+      "citations": [
+        2
+      ],
+      "aliases": [
+        "Regime Oppression"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.541,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Preemptive Military Action",
+      "description": "Israel's stated doctrine of striking first against perceived existential threats",
+      "descriptions": {
+        "probeSummary": "Israel's stated doctrine of striking first against perceived existential threats",
+        "synthesisSummary": "",
+        "displayDescription": "Israel's stated doctrine of striking first against perceived existential threats",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.9,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        -0.3503124132154559,
+        -0.5500999320702876,
+        -0.1795184451235013
+      ],
+      "citations": [
+        1
+      ],
+      "aliases": [
+        "Preemptive Military Action"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.564,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Humanitarian Consequences",
+      "description": "Focus on civilian evacuations, metro shelters, and impossible safety for Tehran's 10M residents",
+      "descriptions": {
+        "probeSummary": "Focus on civilian evacuations, metro shelters, and impossible safety for Tehran's 10M residents",
+        "synthesisSummary": "",
+        "displayDescription": "Focus on civilian evacuations, metro shelters, and impossible safety for Tehran's 10M residents",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.8,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        0.3741528937976112,
+        0.8866139387225377,
+        -0.6431143762945513
+      ],
+      "citations": [],
+      "aliases": [
+        "Humanitarian Consequences"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.518,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Geopolitical Alignment",
+      "description": "Australia/US/Israel coordination framed as containing Iranian regional influence",
+      "descriptions": {
+        "probeSummary": "Australia/US/Israel coordination framed as containing Iranian regional influence",
+        "synthesisSummary": "",
+        "displayDescription": "Australia/US/Israel coordination framed as containing Iranian regional influence",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.75,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        0.2657225758647606,
+        0.16070478205387692,
+        0.2412868148398209
+      ],
+      "citations": [
+        2
+      ],
+      "aliases": [
+        "Geopolitical Alignment"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.495,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Intelligence Disputes",
+      "description": "Noted gaps between Israeli claims and IAEA/US assessments of Iran's nuclear timeline",
+      "descriptions": {
+        "probeSummary": "Noted gaps between Israeli claims and IAEA/US assessments of Iran's nuclear timeline",
+        "synthesisSummary": "",
+        "displayDescription": "Noted gaps between Israeli claims and IAEA/US assessments of Iran's nuclear timeline",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.7,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        0.16576815487920918,
+        -0.0689419729806142,
+        0.2370142371673336
+      ],
+      "citations": [
+        0
+      ],
+      "aliases": [
+        "Intelligence Disputes"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.472,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Retaliatory Risks",
+      "description": "Warnings about attacks on US troops, global flight disruptions, and regional proxy warfare escalation",
+      "descriptions": {
+        "probeSummary": "Warnings about attacks on US troops, global flight disruptions, and regional proxy warfare escalation",
+        "synthesisSummary": "",
+        "displayDescription": "Warnings about attacks on US troops, global flight disruptions, and regional proxy warfare escalation",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.85,
+      "slices": [
+        0
+      ],
+      "type": "unique",
+      "pos": [
+        -0.10448422065043735,
+        0.313579796400441,
+        -0.3344295444630367
+      ],
+      "citations": [],
+      "aliases": [
+        "Retaliatory Risks"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 0,
+          "discName": "Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.541,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Operation Epic Fury",
+      "description": "Coordinated U.S.-Israel military strikes targeting Iranian leadership and infrastructure, framed as preemptive defense against nuclear threats.",
+      "descriptions": {
+        "probeSummary": "Coordinated U.S.-Israel military strikes targeting Iranian leadership and infrastructure, framed as preemptive defense against nuclear threats.",
+        "synthesisSummary": "",
+        "displayDescription": "Coordinated U.S.-Israel military strikes targeting Iranian leadership and infrastructure, framed as preemptive defense against nuclear threats.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 1,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        0.36427243986803687,
+        -0.902666599136118,
+        -0.06554078899893243
+      ],
+      "citations": [
+        3,
+        5
+      ],
+      "aliases": [
+        "Operation Epic Fury"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.61,
+      "evidence_support_score": 0.563,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Regime change agenda",
+      "description": "Explicit Trump-Netanyahu regime overthrow objective noted across Left, Center-Left, and Right analyses",
+      "descriptions": {
+        "probeSummary": "Trump's stated goal to enable Iranians to 'take over your government' through military action, as quoted in multiple NPR sources.",
+        "synthesisSummary": "Explicit Trump-Netanyahu regime overthrow objective noted across Left, Center-Left, and Right analyses",
+        "displayDescription": "Explicit Trump-Netanyahu regime overthrow objective noted across Left, Center-Left, and Right analyses",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.95,
+      "slices": [
+        1,
+        0,
+        3
+      ],
+      "type": "convergent",
+      "pos": [
+        -0.22391160319137823,
+        0.26020076793978997,
+        0.7414611756211645
+      ],
+      "citations": [
+        5
+      ],
+      "aliases": [
+        "Regime change agenda"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        },
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe convergence"
+        }
+      ],
+      "relevance_score": 0.862,
+      "evidence_support_score": 0.497,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Humanitarian toll",
+      "description": "Civilian casualties including 53 students killed in a Tehran school strike, per Iranian state media reports cited by NPR.",
+      "descriptions": {
+        "probeSummary": "Civilian casualties including 53 students killed in a Tehran school strike, per Iranian state media reports cited by NPR.",
+        "synthesisSummary": "",
+        "displayDescription": "Civilian casualties including 53 students killed in a Tehran school strike, per Iranian state media reports cited by NPR.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.9,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        0.6499546176969541,
+        0.8646536013075693,
+        -0.6282034002669722
+      ],
+      "citations": [
+        3
+      ],
+      "aliases": [
+        "Humanitarian toll"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.564,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Maximum pressure campaign",
+      "description": "Trump's policy context combining sanctions and military action against Iran, referenced through prior NPR reporting on economic sanctions.",
+      "descriptions": {
+        "probeSummary": "Trump's policy context combining sanctions and military action against Iran, referenced through prior NPR reporting on economic sanctions.",
+        "synthesisSummary": "",
+        "displayDescription": "Trump's policy context combining sanctions and military action against Iran, referenced through prior NPR reporting on economic sanctions.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.85,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        0.2447323418875822,
+        -0.5965929563876791,
+        0.1565248838707167
+      ],
+      "citations": [
+        4
+      ],
+      "aliases": [
+        "Maximum pressure campaign"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.541,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Ballistic missile retaliation",
+      "description": "Iran's response striking U.S. bases in Gulf states and Israel, killing a migrant worker in UAE per Defense Ministry reports.",
+      "descriptions": {
+        "probeSummary": "Iran's response striking U.S. bases in Gulf states and Israel, killing a migrant worker in UAE per Defense Ministry reports.",
+        "synthesisSummary": "",
+        "displayDescription": "Iran's response striking U.S. bases in Gulf states and Israel, killing a migrant worker in UAE per Defense Ministry reports.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.8,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        0.34818176679002444,
+        -0.1201343056652133,
+        -0.5013269802743404
+      ],
+      "citations": [],
+      "aliases": [
+        "Ballistic missile retaliation"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.518,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Nuclear program stalemate",
+      "description": "Failed negotiations between Trump administration and Iran referenced as key justification for military action.",
+      "descriptions": {
+        "probeSummary": "Failed negotiations between Trump administration and Iran referenced as key justification for military action.",
+        "synthesisSummary": "",
+        "displayDescription": "Failed negotiations between Trump administration and Iran referenced as key justification for military action.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.75,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        0.25942630103821424,
+        -0.41847084603665463,
+        0.4932886721083937
+      ],
+      "citations": [
+        4
+      ],
+      "aliases": [
+        "Nuclear program stalemate"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.495,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Existential threat framing",
+      "description": "Netanyahu's claimed rationale for strikes as necessary to 'remove the threat posed by the terrorist regime' (NHPR source).",
+      "descriptions": {
+        "probeSummary": "Netanyahu's claimed rationale for strikes as necessary to 'remove the threat posed by the terrorist regime' (NHPR source).",
+        "synthesisSummary": "",
+        "displayDescription": "Netanyahu's claimed rationale for strikes as necessary to 'remove the threat posed by the terrorist regime' (NHPR source).",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.7,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        -0.10888775277673013,
+        -0.7770786369852988,
+        -0.3119856020521827
+      ],
+      "citations": [
+        3
+      ],
+      "aliases": [
+        "Existential threat framing"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.472,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Sovereignty violation claims",
+      "description": "Iranian condemnation of strikes as 'gross violation' of national sovereignty per Foreign Ministry statements.",
+      "descriptions": {
+        "probeSummary": "Iranian condemnation of strikes as 'gross violation' of national sovereignty per Foreign Ministry statements.",
+        "synthesisSummary": "",
+        "displayDescription": "Iranian condemnation of strikes as 'gross violation' of national sovereignty per Foreign Ministry statements.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.65,
+      "slices": [
+        1
+      ],
+      "type": "unique",
+      "pos": [
+        -0.5909602793107199,
+        -0.42997913945901695,
+        0.31941099554168845
+      ],
+      "citations": [
+        3
+      ],
+      "aliases": [
+        "Sovereignty violation claims"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 1,
+          "discName": "Center-Left",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.449,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Pre-emptive strikes",
+      "description": "Military actions justified as preventing imminent nuclear/military threats from Iran",
+      "descriptions": {
+        "probeSummary": "Military actions justified as preventing imminent nuclear/military threats from Iran",
+        "synthesisSummary": "",
+        "displayDescription": "Military actions justified as preventing imminent nuclear/military threats from Iran",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.95,
+      "slices": [
+        2
+      ],
+      "type": "unique",
+      "pos": [
+        -0.11405658641099672,
+        -0.9218511488473269,
+        -0.07079651547949072
+      ],
+      "citations": [
+        6
+      ],
+      "aliases": [
+        "Pre-emptive strikes"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.587,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Nuclear program",
+      "description": "Iran's disputed uranium enrichment activities cited as primary justification for attacks",
+      "descriptions": {
+        "probeSummary": "Iran's disputed uranium enrichment activities cited as primary justification for attacks",
+        "synthesisSummary": "",
+        "displayDescription": "Iran's disputed uranium enrichment activities cited as primary justification for attacks",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.93,
+      "slices": [
+        2
+      ],
+      "type": "unique",
+      "pos": [
+        0.04523425322793634,
+        -0.5153680744232659,
+        0.5459717054000295
+      ],
+      "citations": [
+        6
+      ],
+      "aliases": [
+        "Nuclear program"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.577,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Military threats",
+      "description": "Iranian ballistic missile capabilities and proxy networks triggering defensive action",
+      "descriptions": {
+        "probeSummary": "Iranian ballistic missile capabilities and proxy networks triggering defensive action",
+        "synthesisSummary": "",
+        "displayDescription": "Iranian ballistic missile capabilities and proxy networks triggering defensive action",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.88,
+      "slices": [
+        2
+      ],
+      "type": "unique",
+      "pos": [
+        0.17872528797699394,
+        0.05572760093738137,
+        -0.2335075624295774
+      ],
+      "citations": [
+        6,
+        7
+      ],
+      "aliases": [
+        "Military threats"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.554,
+      "evidence_support_score": 0.563,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Civilian casualties",
+      "description": "Unverified reports of civilian deaths used to highlight humanitarian consequences Deaths from strikes and debris, noted but secondary to strategic objectives.",
+      "descriptions": {
+        "probeSummary": "Unverified reports of civilian deaths used to highlight humanitarian consequences Deaths from strikes and debris, noted but secondary to strategic objectives.",
+        "synthesisSummary": "",
+        "displayDescription": "Unverified reports of civilian deaths used to highlight humanitarian consequences Deaths from strikes and debris, noted but secondary to strategic objectives.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.85,
+      "slices": [
+        2,
+        3
+      ],
+      "type": "convergent",
+      "pos": [
+        0.6877622581902724,
+        0.9701601159212212,
+        -0.41765357890968186
+      ],
+      "citations": [],
+      "aliases": [
+        "Civilian casualties"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.71,
+      "evidence_support_score": 0.144,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Regional destabilization",
+      "description": "Escalation through Iranian retaliation across Middle Eastern targets Iran’s role in fostering instability, a key motivator for allied military intervention.",
+      "descriptions": {
+        "probeSummary": "Escalation through Iranian retaliation across Middle Eastern targets Iran’s role in fostering instability, a key motivator for allied military intervention.",
+        "synthesisSummary": "",
+        "displayDescription": "Escalation through Iranian retaliation across Middle Eastern targets Iran’s role in fostering instability, a key motivator for allied military intervention.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.85,
+      "slices": [
+        2,
+        3
+      ],
+      "type": "convergent",
+      "pos": [
+        -0.23860053043559,
+        0.6932804478725638,
+        -0.13980276353304216
+      ],
+      "citations": [
+        6,
+        8
+      ],
+      "aliases": [
+        "Regional destabilization"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.71,
+      "evidence_support_score": 0.657,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Domestic crackdowns",
+      "description": "Iran's violent suppression of protests cited as secondary rationale for intervention",
+      "descriptions": {
+        "probeSummary": "Iran's violent suppression of protests cited as secondary rationale for intervention",
+        "synthesisSummary": "",
+        "displayDescription": "Iran's violent suppression of protests cited as secondary rationale for intervention",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.78,
+      "slices": [
+        2
+      ],
+      "type": "unique",
+      "pos": [
+        -0.3768782255545759,
+        -0.2635849856100031,
+        0.5793784674746669
+      ],
+      "citations": [],
+      "aliases": [
+        "Domestic crackdowns"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.508,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Airspace closures",
+      "description": "Operational security measure impacting civilian travel during conflict",
+      "descriptions": {
+        "probeSummary": "Operational security measure impacting civilian travel during conflict",
+        "synthesisSummary": "",
+        "displayDescription": "Operational security measure impacting civilian travel during conflict",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.75,
+      "slices": [
+        2
+      ],
+      "type": "unique",
+      "pos": [
+        0.12349691143157669,
+        0.1876717504715142,
+        -0.4967573996817851
+      ],
+      "citations": [],
+      "aliases": [
+        "Airspace closures"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.495,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Regime fragility",
+      "description": "Analyst warnings about Iran's internal instability affecting retaliation calculus",
+      "descriptions": {
+        "probeSummary": "Analyst warnings about Iran's internal instability affecting retaliation calculus",
+        "synthesisSummary": "",
+        "displayDescription": "Analyst warnings about Iran's internal instability affecting retaliation calculus",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.72,
+      "slices": [
+        2
+      ],
+      "type": "unique",
+      "pos": [
+        -0.31795103871229197,
+        0.5022807630283992,
+        0.17455928295164666
+      ],
+      "citations": [
+        7
+      ],
+      "aliases": [
+        "Regime fragility"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 2,
+          "discName": "Center",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.481,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Nuclear ambitions",
+      "description": "Iran’s alleged pursuit of nuclear weapons, cited as the primary justification for preemptive strikes.",
+      "descriptions": {
+        "probeSummary": "Iran’s alleged pursuit of nuclear weapons, cited as the primary justification for preemptive strikes.",
+        "synthesisSummary": "",
+        "displayDescription": "Iran’s alleged pursuit of nuclear weapons, cited as the primary justification for preemptive strikes.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.95,
+      "slices": [
+        3
+      ],
+      "type": "unique",
+      "pos": [
+        -0.0067673816858310355,
+        -0.8310547022337504,
+        0.3257622239379707
+      ],
+      "citations": [
+        8
+      ],
+      "aliases": [
+        "Nuclear ambitions"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.587,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Preemptive action",
+      "description": "The U.S.-Israel rationale for attacking Iran to neutralize perceived imminent threats.",
+      "descriptions": {
+        "probeSummary": "The U.S.-Israel rationale for attacking Iran to neutralize perceived imminent threats.",
+        "synthesisSummary": "",
+        "displayDescription": "The U.S.-Israel rationale for attacking Iran to neutralize perceived imminent threats.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.9,
+      "slices": [
+        3
+      ],
+      "type": "unique",
+      "pos": [
+        -0.04013919330299639,
+        -0.6483825712966075,
+        -0.08294276164104533
+      ],
+      "citations": [
+        8
+      ],
+      "aliases": [
+        "Preemptive action"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.564,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Coordinated operation",
+      "description": "Joint U.S.-Israel strikes targeting Iranian nuclear/military infrastructure.",
+      "descriptions": {
+        "probeSummary": "Joint U.S.-Israel strikes targeting Iranian nuclear/military infrastructure.",
+        "synthesisSummary": "",
+        "displayDescription": "Joint U.S.-Israel strikes targeting Iranian nuclear/military infrastructure.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.8,
+      "slices": [
+        3
+      ],
+      "type": "unique",
+      "pos": [
+        0.2583630953752674,
+        -0.7563314745871887,
+        -0.27508454226555795
+      ],
+      "citations": [
+        8
+      ],
+      "aliases": [
+        "Coordinated operation"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.518,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Regime overthrow",
+      "description": "Implied goal of weakening Iran’s leadership, per Trump’s call for Iranians to 'take over your government.'",
+      "descriptions": {
+        "probeSummary": "Implied goal of weakening Iran’s leadership, per Trump’s call for Iranians to 'take over your government.'",
+        "synthesisSummary": "",
+        "displayDescription": "Implied goal of weakening Iran’s leadership, per Trump’s call for Iranians to 'take over your government.'",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.75,
+      "slices": [
+        3
+      ],
+      "type": "unique",
+      "pos": [
+        -0.26384758193057345,
+        -0.04581258115006995,
+        0.8876791703127643
+      ],
+      "citations": [],
+      "aliases": [
+        "Regime overthrow"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.495,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Retaliatory strikes",
+      "description": "Iran’s missile attacks on U.S. bases and allies, framed as evidence of its threat.",
+      "descriptions": {
+        "probeSummary": "Iran’s missile attacks on U.S. bases and allies, framed as evidence of its threat.",
+        "synthesisSummary": "",
+        "displayDescription": "Iran’s missile attacks on U.S. bases and allies, framed as evidence of its threat.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.7,
+      "slices": [
+        3
+      ],
+      "type": "unique",
+      "pos": [
+        0.23846724682765794,
+        -0.4137718771672867,
+        -0.45462837535764467
+      ],
+      "citations": [
+        8
+      ],
+      "aliases": [
+        "Retaliatory strikes"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.472,
+      "evidence_support_score": 0.397,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Sovereignty violations",
+      "description": "Critics’ argument against unilateral military action in Iran.",
+      "descriptions": {
+        "probeSummary": "Critics’ argument against unilateral military action in Iran.",
+        "synthesisSummary": "",
+        "displayDescription": "Critics’ argument against unilateral military action in Iran.",
+        "displayDescriptionReason": "probeSummary"
+      },
+      "centrality": 0.65,
+      "slices": [
+        3
+      ],
+      "type": "unique",
+      "pos": [
+        -0.43976541968418,
+        -0.6360405347461212,
+        0.3445645362941527
+      ],
+      "citations": [],
+      "aliases": [
+        "Sovereignty violations"
+      ],
+      "description_source": "llm",
+      "description_provenance": [
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Original probe model description"
+        },
+        {
+          "source": "llm",
+          "stage": "probe",
+          "discId": 3,
+          "discName": "Right",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Probe model description"
+        }
+      ],
+      "relevance_score": 0.449,
+      "evidence_support_score": 0.05,
+      "display_description_source": "llm"
+    },
+    {
+      "label": "Preemptive military justification",
+      "description": "All disciplines reference preemptive strikes as core justification, framed as preventing nuclear/military threats despite varying assessments of validity",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "All disciplines reference preemptive strikes as core justification, framed as preventing nuclear/military threats despite varying assessments of validity",
+        "displayDescription": "All disciplines reference preemptive strikes as core justification, framed as preventing nuclear/military threats despite varying assessments of validity",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.6,
+      "slices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "type": "convergent",
+      "pos": [
+        -0.21872036936401085,
+        -0.4199040362681755,
+        0.15478685977236525
+      ],
+      "citations": [],
+      "aliases": [
+        "Preemptive military justification"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe convergence"
+        }
+      ],
+      "relevance_score": 0.808,
+      "evidence_support_score": 0.2,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Civilian casualties focus",
+      "description": "Left/Center perspectives emphasize civilian infrastructure impacts (e.g. girls’ school bombing) as central consequence, while Right minimizes this",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Left/Center perspectives emphasize civilian infrastructure impacts (e.g. girls’ school bombing) as central consequence, while Right minimizes this",
+        "displayDescription": "Left/Center perspectives emphasize civilian infrastructure impacts (e.g. girls’ school bombing) as central consequence, while Right minimizes this",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.6,
+      "slices": [
+        0,
+        1,
+        2
+      ],
+      "type": "convergent",
+      "pos": [
+        0.4636465390639593,
+        1.074849915806765,
+        -0.49471949197250126
+      ],
+      "citations": [],
+      "aliases": [
+        "Civilian casualties focus"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe convergence"
+        }
+      ],
+      "relevance_score": 0.701,
+      "evidence_support_score": 0.15,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Retaliatory escalation risks",
+      "description": "Three disciplines stress Iranian missile responses and regional destabilization as inevitable consequence",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Three disciplines stress Iranian missile responses and regional destabilization as inevitable consequence",
+        "displayDescription": "Three disciplines stress Iranian missile responses and regional destabilization as inevitable consequence",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.6,
+      "slices": [
+        0,
+        1,
+        2
+      ],
+      "type": "convergent",
+      "pos": [
+        -0.0744928322151966,
+        0.5520477743928763,
+        -0.4309423776946073
+      ],
+      "citations": [],
+      "aliases": [
+        "Retaliatory escalation risks"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe convergence"
+        }
+      ],
+      "relevance_score": 0.701,
+      "evidence_support_score": 0.15,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Humanitarian costs vs. security necessity",
+      "description": "Left frames civilian deaths as disproportionate, while Right legitimizes strikes as unavoidable collateral for national security",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Left frames civilian deaths as disproportionate, while Right legitimizes strikes as unavoidable collateral for national security",
+        "displayDescription": "Left frames civilian deaths as disproportionate, while Right legitimizes strikes as unavoidable collateral for national security",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [
+        0,
+        3
+      ],
+      "type": "contradictory",
+      "pos": [
+        0.619174646413885,
+        1.2275203877180874,
+        -0.44388410904642034
+      ],
+      "citations": [],
+      "aliases": [
+        "Humanitarian costs vs. security necessity"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe contradiction"
+        }
+      ],
+      "relevance_score": 0.553,
+      "evidence_support_score": 0.144,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Intelligence validity disputes",
+      "description": "Left cites contradictory international nuclear assessments undermining preemptive justification, while Center accepts imminent threat framing",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Left cites contradictory international nuclear assessments undermining preemptive justification, while Center accepts imminent threat framing",
+        "displayDescription": "Left cites contradictory international nuclear assessments undermining preemptive justification, while Center accepts imminent threat framing",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [
+        0,
+        2
+      ],
+      "type": "contradictory",
+      "pos": [
+        -0.2365160939036537,
+        0.011526569069458915,
+        0.2525184297070257
+      ],
+      "citations": [],
+      "aliases": [
+        "Intelligence validity disputes"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe contradiction"
+        }
+      ],
+      "relevance_score": 0.553,
+      "evidence_support_score": 0.144,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Regime stability assumptions",
+      "description": "Center-Left questions if strikes strengthen authoritarian rule, while Right assumes regime fragility enables overthrow",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Center-Left questions if strikes strengthen authoritarian rule, while Right assumes regime fragility enables overthrow",
+        "displayDescription": "Center-Left questions if strikes strengthen authoritarian rule, while Right assumes regime fragility enables overthrow",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [
+        1,
+        3
+      ],
+      "type": "contradictory",
+      "pos": [
+        -0.4150545802473114,
+        0.3714309638293095,
+        0.400938706627841
+      ],
+      "citations": [],
+      "aliases": [
+        "Regime stability assumptions"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Cross-probe contradiction"
+        }
+      ],
+      "relevance_score": 0.553,
+      "evidence_support_score": 0.144,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Multi-axis conflict escalation",
+      "description": "Integration reveals three simultaneous wars: military (U.S./Israel vs Iran), diplomatic (nuclear negotiations collapse), and ideological (regime change vs sovereignty)",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Integration reveals three simultaneous wars: military (U.S./Israel vs Iran), diplomatic (nuclear negotiations collapse), and ideological (regime change vs sovereignty)",
+        "displayDescription": "Integration reveals three simultaneous wars: military (U.S./Israel vs Iran), diplomatic (nuclear negotiations collapse), and ideological (regime change vs sovereignty)",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [],
+      "type": "emergent",
+      "pos": [
+        -0.41730240264499086,
+        0.5214964659244176,
+        -0.4799899896868146
+      ],
+      "citations": [],
+      "aliases": [
+        "Multi-axis conflict escalation"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Emergent synthesis insight"
+        }
+      ],
+      "relevance_score": 0.524,
+      "evidence_support_score": 0.116,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Trump-Netanyahu synergy paradox",
+      "description": "Cross-analysis shows Trump’s anti-war rhetoric contradicted by operational coordination with Netanyahu’s decades-long Iran attack agenda",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Cross-analysis shows Trump’s anti-war rhetoric contradicted by operational coordination with Netanyahu’s decades-long Iran attack agenda",
+        "displayDescription": "Cross-analysis shows Trump’s anti-war rhetoric contradicted by operational coordination with Netanyahu’s decades-long Iran attack agenda",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [],
+      "type": "emergent",
+      "pos": [
+        0.0964976258154137,
+        0.23297173851952271,
+        0.5764693358727594
+      ],
+      "citations": [],
+      "aliases": [
+        "Trump-Netanyahu synergy paradox"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Emergent synthesis insight"
+        }
+      ],
+      "relevance_score": 0.524,
+      "evidence_support_score": 0.116,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Proxy war inversion",
+      "description": "Strikes invert traditional Middle East dynamics - U.S. becomes direct combatant rather than relying on regional proxies",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Strikes invert traditional Middle East dynamics - U.S. becomes direct combatant rather than relying on regional proxies",
+        "displayDescription": "Strikes invert traditional Middle East dynamics - U.S. becomes direct combatant rather than relying on regional proxies",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [],
+      "type": "emergent",
+      "pos": [
+        -0.4236061760890627,
+        0.3753344038644083,
+        -0.28649684855207125
+      ],
+      "citations": [],
+      "aliases": [
+        "Proxy war inversion"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Emergent synthesis insight"
+        }
+      ],
+      "relevance_score": 0.524,
+      "evidence_support_score": 0.116,
+      "display_description_source": "synthesis"
+    },
+    {
+      "label": "Civilianization of deterrence",
+      "description": "Iran’s retaliation against Gulf states transforms civilian migrant workers/urban centers into deliberate escalation vectors",
+      "descriptions": {
+        "probeSummary": "",
+        "synthesisSummary": "Iran’s retaliation against Gulf states transforms civilian migrant workers/urban centers into deliberate escalation vectors",
+        "displayDescription": "Iran’s retaliation against Gulf states transforms civilian migrant workers/urban centers into deliberate escalation vectors",
+        "displayDescriptionReason": "synthesisSummary"
+      },
+      "centrality": 0.5,
+      "slices": [],
+      "type": "emergent",
+      "pos": [
+        0.10635401204662757,
+        0.7942277452596959,
+        -0.5520515831600823
+      ],
+      "citations": [],
+      "aliases": [
+        "Civilianization of deterrence"
+      ],
+      "description_source": "synthesis",
+      "description_provenance": [
+        {
+          "source": "synthesis",
+          "stage": "synthesis",
+          "discName": "",
+          "status": "",
+          "impact": "",
+          "query": "",
+          "note": "Emergent synthesis insight"
+        }
+      ],
+      "relevance_score": 0.524,
+      "evidence_support_score": 0.116,
+      "display_description_source": "synthesis"
+    }
+  ],
+  "citations": [
+    {
+      "id": 0,
+      "source_type": "major journalism",
+      "url": "https://www.bbc.com/news/articles/clyn3jx2nxqo",
+      "title": "Your questions answered on the Israel-Iran conflict",
+      "publisher": "BBC",
+      "date": "2025-06-18",
+      "quote_or_snippet": "Iran was accelerating towards building a nuclear weapon...not necessarily shared by IAEA/US intelligence",
+      "relevance": "Shows disputed justification for attacks",
+      "supporting_terms": [
+        "Intelligence Disputes",
+        "Nuclear Proliferation Prevention"
+      ],
+      "supporting_terms_raw": [
+        "Intelligence Disputes",
+        "Nuclear Proliferation Prevention"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Intelligence Disputes",
+          "mapped_term": "Intelligence Disputes",
+          "via_alias": "Intelligence Disputes",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Nuclear Proliferation Prevention",
+          "mapped_term": "Nuclear Proliferation Prevention",
+          "via_alias": "Nuclear Proliferation Prevention",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 0
+    },
+    {
+      "id": 1,
+      "source_type": "major journalism",
+      "url": "https://www.npr.org/transcripts/nx-s1-5432480",
+      "title": "Why Israel attacked Iran, and what it could mean for the U.S.",
+      "publisher": "NPR",
+      "date": "2025-06-13",
+      "quote_or_snippet": "We learned that lesson from October 7 - we will not wait to be surprised again",
+      "relevance": "Explains preemptive strike doctrine",
+      "supporting_terms": [
+        "Preemptive Military Action"
+      ],
+      "supporting_terms_raw": [
+        "Preemptive Military Action"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Preemptive Military Action",
+          "mapped_term": "Preemptive Military Action",
+          "via_alias": "Preemptive Military Action",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 0
+    },
+    {
+      "id": 2,
+      "source_type": "major journalism",
+      "url": "https://7news.com.au/news/australia-reacts-to-us-israel-attack-on-iran-as-world-watches-conflict-unfold-c-21788860",
+      "title": "Australia reacts to US, Israel attack on Iran",
+      "publisher": "7NEWS",
+      "date": "2026-02-28",
+      "quote_or_snippet": "Stands with brave people of Iran in struggle against oppression",
+      "relevance": "Frames support through anti-regime rhetoric",
+      "supporting_terms": [
+        "Regime Oppression",
+        "Geopolitical Alignment"
+      ],
+      "supporting_terms_raw": [
+        "Regime Oppression",
+        "Geopolitical Alignment"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Regime Oppression",
+          "mapped_term": "Regime Oppression",
+          "via_alias": "Regime Oppression",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Geopolitical Alignment",
+          "mapped_term": "Geopolitical Alignment",
+          "via_alias": "Geopolitical Alignment",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 0
+    },
+    {
+      "id": 3,
+      "source_type": "major journalism",
+      "url": "https://www.npr.org/2026/02/28/nx-s1-5730158/israel-iran-strikes",
+      "title": "Explosions heard in Tehran as Israel launches strike",
+      "publisher": "NPR",
+      "date": "2026-02-28",
+      "quote_or_snippet": "\"targeting Iranian Supreme Leader Ayatollah Ali Khamenei and the Iranian President\"",
+      "relevance": "Supports leadership targeting claim",
+      "supporting_terms": [
+        "Operation Epic Fury",
+        "Existential threat framing",
+        "Humanitarian toll",
+        "Sovereignty violation claims"
+      ],
+      "supporting_terms_raw": [
+        "Operation Epic Fury",
+        "Existential threat framing",
+        "Humanitarian toll",
+        "Sovereignty violation claims"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Operation Epic Fury",
+          "mapped_term": "Operation Epic Fury",
+          "via_alias": "Operation Epic Fury",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Existential threat framing",
+          "mapped_term": "Existential threat framing",
+          "via_alias": "Existential threat framing",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Humanitarian toll",
+          "mapped_term": "Humanitarian toll",
+          "via_alias": "Humanitarian toll",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Sovereignty violation claims",
+          "mapped_term": "Sovereignty violation claims",
+          "via_alias": "Sovereignty violation claims",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 1
+    },
+    {
+      "id": 4,
+      "source_type": "major journalism",
+      "url": "https://www.nhpr.org/2026-02-28/israel-and-the-u-s-launch-strikes-against-iran",
+      "title": "Trump announces 'major combat operations' in Iran",
+      "publisher": "New Hampshire Public Radio",
+      "date": "2026-02-28",
+      "quote_or_snippet": "\"failed to renounce their nuclear ambitions\" despite U.S. deals",
+      "relevance": "Supports nuclear stalemate context",
+      "supporting_terms": [
+        "Nuclear program stalemate",
+        "Maximum pressure campaign"
+      ],
+      "supporting_terms_raw": [
+        "Nuclear program stalemate",
+        "Maximum pressure campaign"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Nuclear program stalemate",
+          "mapped_term": "Nuclear program stalemate",
+          "via_alias": "Nuclear program stalemate",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Maximum pressure campaign",
+          "mapped_term": "Maximum pressure campaign",
+          "via_alias": "Maximum pressure campaign",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 1
+    },
+    {
+      "id": 5,
+      "source_type": "major journalism",
+      "url": "https://www.iowapublicradio.org/news-from-npr/2026-02-28/israel-and-the-u-s-launch-strikes-against-iran",
+      "title": "Trump announces 'major combat operations' in Iran",
+      "publisher": "Iowa Public Radio",
+      "date": "2026-02-28",
+      "quote_or_snippet": "\"take over your government, it will be yours to take\"",
+      "relevance": "Direct regime change encouragement",
+      "supporting_terms": [
+        "Regime change agenda",
+        "Operation Epic Fury"
+      ],
+      "supporting_terms_raw": [
+        "Regime change agenda",
+        "Operation Epic Fury"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Regime change agenda",
+          "mapped_term": "Regime change agenda",
+          "via_alias": "Regime change agenda",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Operation Epic Fury",
+          "mapped_term": "Operation Epic Fury",
+          "via_alias": "Operation Epic Fury",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 1
+    },
+    {
+      "id": 6,
+      "source_type": "major journalism",
+      "url": "https://www.bbc.com/news/articles/cx2dyz6p3weo",
+      "title": "What is happening in Iran? What we know about US-Israel attack and Tehran response",
+      "publisher": "BBC",
+      "date": "2026",
+      "quote_or_snippet": "pre-emptive strikes aimed at dismantling perceived nuclear and military threats",
+      "relevance": "Core justification for attacks",
+      "supporting_terms": [
+        "Pre-emptive strikes",
+        "Nuclear program",
+        "Regional destabilization",
+        "Military threats"
+      ],
+      "supporting_terms_raw": [
+        "Pre-emptive strikes",
+        "Nuclear program",
+        "Regional destabilization",
+        "Military threats"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Pre-emptive strikes",
+          "mapped_term": "Pre-emptive strikes",
+          "via_alias": "Pre-emptive strikes",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Nuclear program",
+          "mapped_term": "Nuclear program",
+          "via_alias": "Nuclear program",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Regional destabilization",
+          "mapped_term": "Regional destabilization",
+          "via_alias": "Regional destabilization",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Military threats",
+          "mapped_term": "Military threats",
+          "via_alias": "Military threats",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 2
+    },
+    {
+      "id": 7,
+      "source_type": "major journalism",
+      "url": "https://www.bbc.co.uk/news/articles/cly5pd98z87o",
+      "title": "Context from Prior BBC Articles",
+      "publisher": "BBC",
+      "date": "2026",
+      "quote_or_snippet": "US military buildup signaled escalating readiness",
+      "relevance": "Shows pre-conflict preparations",
+      "supporting_terms": [
+        "Military threats",
+        "Regime fragility"
+      ],
+      "supporting_terms_raw": [
+        "Military threats",
+        "Regime fragility"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Military threats",
+          "mapped_term": "Military threats",
+          "via_alias": "Military threats",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Regime fragility",
+          "mapped_term": "Regime fragility",
+          "via_alias": "Regime fragility",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 2
+    },
+    {
+      "id": 8,
+      "source_type": "major journalism",
+      "url": "https://www.foxnews.com/world/world-leaders-split-over-military-action-us-israel-strike-iran-coordinated-operation",
+      "title": "US and Israel strike Iran as world leaders split sharply on response",
+      "publisher": "Fox News",
+      "date": "2026-02-28",
+      "quote_or_snippet": "Iran must never be allowed to obtain or develop nuclear weapons… [It is] the principal source of instability and terror.",
+      "relevance": "Supports 'nuclear ambitions' and 'regional destabilization' terms",
+      "supporting_terms": [
+        "Nuclear ambitions",
+        "Regional destabilization",
+        "Preemptive action",
+        "Coordinated operation",
+        "Retaliatory strikes"
+      ],
+      "supporting_terms_raw": [
+        "Nuclear ambitions",
+        "Regional destabilization",
+        "Preemptive action",
+        "Coordinated operation",
+        "Retaliatory strikes"
+      ],
+      "supporting_term_mappings": [
+        {
+          "supporting_term": "Nuclear ambitions",
+          "mapped_term": "Nuclear ambitions",
+          "via_alias": "Nuclear ambitions",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Regional destabilization",
+          "mapped_term": "Regional destabilization",
+          "via_alias": "Regional destabilization",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Preemptive action",
+          "mapped_term": "Preemptive action",
+          "via_alias": "Preemptive action",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Coordinated operation",
+          "mapped_term": "Coordinated operation",
+          "via_alias": "Coordinated operation",
+          "strategy": "exact",
+          "confidence": 1
+        },
+        {
+          "supporting_term": "Retaliatory strikes",
+          "mapped_term": "Retaliatory strikes",
+          "via_alias": "Retaliatory strikes",
+          "strategy": "exact",
+          "confidence": 1
+        }
+      ],
+      "unmapped_supporting_terms": [],
+      "probeId": 3
+    }
+  ],
+  "auditTrail": [
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:33:03.790Z",
+      "kind": "chat",
+      "model": "deepseek/deepseek-r1",
+      "temperature": 0.2,
+      "max_tokens": 1400,
+      "webSearch": true,
+      "jsonMode": true
+    },
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:33:03.791Z",
+      "kind": "chat",
+      "model": "deepseek/deepseek-r1",
+      "temperature": 0.2,
+      "max_tokens": 1400,
+      "webSearch": true,
+      "jsonMode": true
+    },
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:33:03.791Z",
+      "kind": "chat",
+      "model": "deepseek/deepseek-r1",
+      "temperature": 0.2,
+      "max_tokens": 1400,
+      "webSearch": true,
+      "jsonMode": true
+    },
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:33:03.790Z",
+      "kind": "chat",
+      "model": "deepseek/deepseek-r1",
+      "temperature": 0.2,
+      "max_tokens": 1400,
+      "webSearch": true,
+      "jsonMode": true
+    },
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:33:55.879Z",
+      "kind": "chat",
+      "model": "deepseek/deepseek-r1",
+      "temperature": 0.2,
+      "max_tokens": 1400,
+      "webSearch": true,
+      "jsonMode": true
+    },
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:34:46.609Z",
+      "kind": "embeddings",
+      "model": "qwen/qwen3-embedding-8b",
+      "batch": 1,
+      "totalBatches": 2,
+      "input_count": 24,
+      "vector_dimensions": 4096,
+      "response_meta": {
+        "object": "list",
+        "usage": {
+          "prompt_tokens": 1289,
+          "total_tokens": 1289,
+          "cost": 0.00001289
+        },
+        "data_count": 24
+      }
+    },
+    {
+      "runId": "run_92d8ca2f",
+      "timestamp": "2026-02-28T15:34:49.478Z",
+      "kind": "embeddings",
+      "model": "qwen/qwen3-embedding-8b",
+      "batch": 2,
+      "totalBatches": 2,
+      "input_count": 15,
+      "vector_dimensions": 4096,
+      "response_meta": {
+        "object": "list",
+        "usage": {
+          "prompt_tokens": 862,
+          "total_tokens": 862,
+          "cost": 0.00000862
+        },
+        "data_count": 15
+      }
+    }
+  ],
+  "embeddingDiagnostics": {
+    "similarityMatrix": {
+      "discIds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "labels": [
+        "LE",
+        "CE",
+        "CE",
+        "RI"
+      ],
+      "distances": [
+        [
+          0,
+          0.01796749261198216,
+          0.015337239907400546,
+          0.02203061750931623
+        ],
+        [
+          0.01796749261198216,
+          0,
+          0.020546996514299254,
+          0.015008038815525815
+        ],
+        [
+          0.015337239907400546,
+          0.020546996514299254,
+          0,
+          0.022544796644385134
+        ],
+        [
+          0.02203061750931623,
+          0.015008038815525815,
+          0.022544796644385134,
+          0
+        ]
+      ],
+      "generatedAt": "2026-02-28T15:34:51.332Z"
+    },
+    "projectionStability": {
+      "runs": 4,
+      "neighborCount": 2,
+      "score": 0.7083333333333334,
+      "label": "mixed",
+      "perRun": [
+        {
+          "seed": 20260219,
+          "overlap": 0.875
+        },
+        {
+          "seed": 20260220,
+          "overlap": 0.625
+        },
+        {
+          "seed": 20260221,
+          "overlap": 0.625
+        }
+      ],
+      "generatedAt": "2026-02-28T15:34:52.311Z"
+    }
+  },
+  "artifacts": {
+    "claims": {
+      "status": "not_generated",
+      "stale": false,
+      "generatedAt": "",
+      "fingerprint": "",
+      "contentText": "",
+      "contentHTML": ""
+    },
+    "outline": {
+      "status": "not_generated",
+      "stale": false,
+      "generatedAt": "",
+      "fingerprint": "",
+      "contentText": "",
+      "contentHTML": ""
+    },
+    "deep_report": {
+      "status": "not_generated",
+      "stale": false,
+      "generatedAt": "",
+      "fingerprint": "",
+      "contentText": "",
+      "contentHTML": ""
+    },
+    "red_team": {
+      "status": "not_generated",
+      "stale": false,
+      "generatedAt": "",
+      "fingerprint": "",
+      "contentText": "",
+      "contentHTML": ""
+    },
+    "replication": {
+      "status": "not_generated",
+      "stale": false,
+      "generatedAt": "",
+      "fingerprint": "",
+      "contentText": "",
+      "contentHTML": ""
+    },
+    "markdown": {
+      "status": "not_generated",
+      "stale": false,
+      "generatedAt": "",
+      "fingerprint": "",
+      "contentText": "",
+      "contentHTML": ""
+    }
+  },
+  "report": "",
+  "claimsLedger": [],
+  "redTeamCritique": "",
+  "replication": [],
+  "outline": "",
+  "markdown": "",
+  "exportedAt": "2026-02-28T15:37:05.748Z"
+}
